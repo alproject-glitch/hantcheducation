@@ -1119,6 +1119,7 @@
 
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
             if (navMenu.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -1133,21 +1134,31 @@
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
             });
         });
 
-        // Dynamic Active Link Navigation Highlight
+        // Dynamic Active Link & Header Scroll State
         const sections = document.querySelectorAll('section');
         const navLi = document.querySelectorAll('.nav-menu ul li a');
+        const header = document.querySelector('.header');
+
         window.addEventListener('scroll', () => {
+            // Shrink header and add glassmorphism style on scroll
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) {
+                if (window.pageYOffset >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
