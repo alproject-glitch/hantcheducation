@@ -694,7 +694,7 @@ body {
 .card-bottom-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
     z-index: 2;
 }
