@@ -1,6 +1,6 @@
-# 🎓 Hantech Education Interactive Portal & SQL Lab
+# 🎓 HanTech Education Interactive Portal & SQL Lab
 
-Portal pembelajaran interaktif bimbingan belajar SMP unggulan **Hantech Education**. Proyek portofolio ini menggabungkan desain web premium modern (Glassmorphism & Bento Layout) dengan modul pembelajaran interaktif berupa **Simulator Logika Python** dan **Interactive SQL Playground** yang berjalan 100% di sisi klien (*client-side*).
+Portal pembelajaran interaktif bimbingan belajar SMP unggulan **HanTech Education**. Proyek portofolio ini menggabungkan desain web premium modern (Glassmorphism & Bento Layout) dengan modul pembelajaran interaktif berupa **Simulator Logika Python** dan **Interactive SQL Playground** yang berjalan 100% di sisi klien (*client-side*).
 
 ---
 
@@ -59,18 +59,18 @@ Berikut langkah-langkah mudah untuk mempublikasikannya:
 
 1. **Buat Repositori Baru di GitHub**:
    * Masuk ke akun GitHub Anda.
-   * Buat repositori baru, misalnya beri nama `bimbel-annur-portal`.
+   * Buat repositori baru, misalnya beri nama `hantcheducation`.
    
 2. **Unggah Berkas Proyek**:
    * Lakukan inisialisasi Git di folder lokal Anda:
      ```bash
      git init
      git add .
-     git commit -m "Initial commit - Portal AN-NUR & SQL Lab"
+     git commit -m "Initial commit - HanTech Education & SQL Lab"
      ```
    * Hubungkan dan dorong (*push*) berkas ke GitHub:
      ```bash
-     git remote add origin https://github.com/username-anda/bimbel-annur-portal.git
+     git remote add origin https://github.com/alproject-glitch/hantcheducation.git
      git branch -M main
      git push -u origin main
      ```
@@ -80,7 +80,7 @@ Berikut langkah-langkah mudah untuk mempublikasikannya:
    * Pada menu bagian kiri, klik **Pages**.
    * Di bagian **Build and deployment**, ubah Source menjadi **Deploy from a branch**.
    * Pilih branch **`main`** (atau `master`) dan folder **`/ (root)`**, lalu klik **Save**.
-   * Tunggu sekitar 1-2 menit. GitHub akan memberikan tautan live page Anda, misalnya: `https://username-anda.github.io/bimbel-annur-portal/`
+   * Tunggu sekitar 1-2 menit. GitHub akan memberikan tautan live page Anda, misalnya: `https://alproject-glitch.github.io/hantcheducation/`
 
 ---
 

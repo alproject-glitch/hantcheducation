@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bimbingan Belajar HanTech Education - Solusi Belajar Terbaik SMP & SQL Playground</title>
     <meta name="description"
-        content="Portal interaktif Bimbingan Belajar AN-NUR SMP. Menampilkan program bimbingan unggulan, simulator logika Python, dan playground SQL interaktif untuk siswa belajar basis data secara langsung.">
+        content="Portal interaktif Bimbingan Belajar HanTech Education SMP. Menampilkan program bimbingan unggulan, simulator logika Python, dan playground SQL interaktif untuk siswa belajar basis data secara langsung.">
     <meta name="keywords"
         content="Bimbel HanTech Education, Bimbingan Belajar, SQL Playground, Belajar SQL Interaktif, Python Simulator, Materi SMP">
     <meta name="author" content="Developer Portfolio">
@@ -661,7 +661,7 @@
         <div class="footer-bottom">
             <div class="container footer-bottom-flex">
                 <p>&copy; 2026 Bimbingan Belajar HanTech Education. All Rights Reserved.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-danger"></i> for AN-NUR Students | <a href="#"
+                <p>Designed with <i class="fa-solid fa-heart text-danger"></i> for HanTech Education Students | <a href="#"
                         id="adminPortalLink"
                         style="color: var(--slate-500); text-decoration: none; font-weight: 600; margin-left: 6px; transition: var(--transition);"><i
                             class="fa-solid fa-key"></i> Portal Admin</a></p>
@@ -1205,7 +1205,7 @@
                             modalMessage.innerHTML = `Luar biasa! Anda sukses menyelesaikan <strong>Level ${currentLevel}: ${lessonsData[currentLevel].title}</strong>.<br>Kueri Anda berhasil dan database mengembalikan data yang tepat. Siap untuk tantangan selanjutnya?`;
                             document.getElementById('nextLevelBtn').innerHTML = 'Lanjut ke Level Berikutnya <i class="fa-solid fa-arrow-right"></i>';
                         } else {
-                            modalMessage.innerHTML = `<strong>Keren Banget! 🎉</strong><br>Anda telah berhasil menuntaskan seluruh 5 tingkat pembelajaran SQL di Bimbel AN-NUR! Sekarang Anda mengerti fondasi SELECT, WHERE, ORDER BY, JOIN, dan INSERT.`;
+                            modalMessage.innerHTML = `<strong>Keren Banget! 🎉</strong><br>Anda telah berhasil menuntaskan seluruh 5 tingkat pembelajaran SQL di Bimbel HanTech Education! Sekarang Anda mengerti fondasi SELECT, WHERE, ORDER BY, JOIN, dan INSERT.`;
                             document.getElementById('nextLevelBtn').innerHTML = 'Tutup & Terus Bereksperimen <i class="fa-solid fa-database"></i>';
                         }
 
@@ -1567,7 +1567,7 @@
             function handleAdminLogin() {
                 const password = adminPasswordInput.value.trim();
 
-                // Allow both "admin123" and "annur2026"
+                // Allow both "admin123" and "hantech2026"
                 if (password === "admin123" || password === "hantech2026") {
                     sessionStorage.setItem('hantech_admin_logged_in', 'true');
                     updateAdminVisibility();
