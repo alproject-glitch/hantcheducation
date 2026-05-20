@@ -48,6 +48,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -55,11 +57,23 @@ body {
     background-color: var(--light);
     color: var(--text-color);
     line-height: 1.6;
+    max-width: 100%;
     overflow-x: hidden;
     position: relative;
 }
 
 /* Background Glowing Blobs */
+.bg-blobs-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
 .blob {
     position: absolute;
     width: 600px;
@@ -495,6 +509,7 @@ body {
     padding: 100px 0;
     background: linear-gradient(180deg, var(--light) 0%, var(--slate-100) 100%);
     position: relative;
+    overflow: hidden;
 }
 
 .section-header {
@@ -810,179 +825,6 @@ img {
     display: block;
 }
 
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 20px;
-        max-width: 980px;
-    }
-
-    .hero-section {
-        padding-top: 140px;
-        padding-bottom: 80px;
-    }
-
-    .hero-grid {
-        gap: 40px;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .hero-content h1 {
-        font-size: 2.6rem;
-    }
-
-    .program-card {
-        min-width: calc(50% - 20px);
-    }
-
-    .program-img {
-        height: 160px;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Header / nav adjustments for mobile */
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 80px;
-        right: 0;
-        left: 0;
-        background: var(--white);
-        padding: 18px 20px;
-        flex-direction: column;
-        gap: 12px;
-        border-bottom: 1px solid rgba(0,0,0,0.04);
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-    }
-
-    /* When menu toggle is active (JS expected to toggle .active), show menu */
-    .menu-toggle.active ~ .nav-menu,
-    .menu-toggle:focus ~ .nav-menu {
-        display: flex;
-    }
-
-    .navbar {
-        height: 68px;
-    }
-
-    .container {
-        padding: 0 16px;
-    }
-
-    .hero-section {
-        padding-top: 100px;
-        padding-bottom: 60px;
-    }
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.2rem;
-        text-align: left;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-        max-width: 100%;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 24px;
-    }
-
-    .hero-stats {
-        gap: 18px;
-        padding-top: 20px;
-    }
-
-    .premium-card-wrapper {
-        max-width: 360px;
-        margin: 0 auto;
-    }
-
-    .program-slider {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .program-card {
-        min-width: 80%;
-        padding: 28px 20px;
-    }
-
-    .program-img {
-        height: 140px;
-    }
-
-    .minilab-wrapper {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .minilab-info h2 {
-        font-size: 2rem;
-    }
-
-    .btn {
-        padding: 10px 18px;
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    html { font-size: 15px; }
-
-    .container {
-        padding: 0 12px;
-        max-width: 100%;
-    }
-
-    .hero-section {
-        padding-top: 80px;
-        padding-bottom: 40px;
-    }
-
-    .hero-content h1 {
-        font-size: 1.6rem;
-        line-height: 1.2;
-    }
-
-    .hero-content p {
-        font-size: 0.95rem;
-    }
-
-    .hero-stats {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .program-card {
-        min-width: 92%;
-        padding: 22px 16px;
-    }
-
-    .program-img {
-        height: 120px;
-    }
-
-    .playground-tabs {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .playground-tab {
-        white-space: nowrap;
-    }
-}
 
 .dot.green { background-color: #10b981; }
 
@@ -1052,6 +894,9 @@ img {
     font-size: 0.9rem;
     min-height: 140px;
     overflow-y: auto;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
     border: 1px solid rgba(255, 255, 255, 0.05);
     line-height: 1.7;
 }
@@ -1987,6 +1832,8 @@ img {
     font-size: 1rem;
     overflow: hidden;
     position: relative;
+    width: 100%;
+    max-width: 100%;
 }
 
 .line-numbers {
@@ -2014,6 +1861,7 @@ img {
     resize: none;
     min-height: 120px;
     width: 100%;
+    min-width: 0;
 }
 
 #sqlInput:focus {
@@ -3638,6 +3486,11 @@ img {
         display: block;
     }
     
+    .sqllab-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
     .nav-menu {
         position: absolute;
         top: 80px;
@@ -3863,6 +3716,11 @@ img {
     .search-box input:focus {
         width: 100%;
     }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
 }
 
 /* --- Screen: Max 576px (Mobile Phones) --- */
@@ -3873,18 +3731,18 @@ img {
 
     /* Scaling Logo and Header down to fit 320px screens perfectly */
     .logo {
-        gap: 8px;
-        font-size: 1.25rem;
+        gap: 6px;
+        font-size: 1.15rem;
     }
     
     .logo-icon {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
         border-radius: 6px;
     }
 
     .logo-icon i {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .header.scrolled .navbar {
@@ -3893,6 +3751,20 @@ img {
 
     .header.scrolled .nav-menu {
         top: 60px !important;
+    }
+
+    /* Stacking Editor Header elements on extremely narrow viewports */
+    .editor-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .editor-header .db-status-badge {
+        margin-left: 0 !important;
+        width: auto;
+        margin-top: 4px;
     }
 
     /* Hero section */
@@ -3937,6 +3809,10 @@ img {
     }
 
     /* SQL Lab Editor Actions Stacking (Reset, Run, Validate) */
+    .editor-body {
+        padding: 16px;
+    }
+
     .editor-actions {
         flex-direction: column;
         align-items: stretch;
@@ -3980,3 +3856,34 @@ img {
         margin: 0;
     }
 }
+
+/* --- Screen: Max 480px (Ultra-mobile Phones) --- */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .program-card {
+        min-width: 92%;
+        padding: 22px 16px;
+    }
+
+    .program-img {
+        height: 120px;
+    }
+}
+
