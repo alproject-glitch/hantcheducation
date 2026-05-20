@@ -3576,10 +3576,13 @@ body {
         top: 80px;
         left: 0;
         width: 100%;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        border-bottom: 1px solid rgba(13, 148, 136, 0.1);
         display: none;
     }
     .nav-menu.active {
@@ -3589,6 +3592,16 @@ body {
         flex-direction: column;
         width: 100%;
         text-align: center;
+        gap: 8px;
+        padding: 0 20px;
+    }
+    .nav-menu ul li {
+        width: 100%;
+    }
+    .nav-menu ul li a {
+        justify-content: center;
+        padding: 12px 20px;
+        width: 100%;
     }
     .menu-toggle {
         display: block;
@@ -3601,8 +3614,36 @@ body {
         gap: 20px;
         align-items: center;
     }
-    .sql-grid {
+    .sqllab-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .sqllab-card {
+        padding: 20px 15px;
+    }
+    .lessons-nav {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+    .lesson-tab {
+        padding: 8px 4px;
+        gap: 4px;
+    }
+    .lesson-tab .tab-title {
+        font-size: 0.65rem;
+    }
+    .lesson-tab .tab-num {
+        font-size: 0.7rem;
+    }
+    .schema-table-content {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .floating-register-btn {
+        bottom: 24px;
+        right: 24px;
+        padding: 14px 22px;
+        font-size: 0.88rem;
     }
     .footer-content {
         grid-template-columns: 1fr;
@@ -3647,5 +3688,22 @@ body {
     }
     .stat-item h3 {
         font-size: 1.8rem;
+    }
+    .lessons-nav {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+    .floating-register-btn {
+        bottom: 16px;
+        right: 16px;
+        padding: 12px 18px;
+        font-size: 0.82rem;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .lessons-nav {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
