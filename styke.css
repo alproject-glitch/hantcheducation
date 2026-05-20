@@ -656,6 +656,8 @@ body {
 .fav-btn {
     background: rgba(0, 0, 0, 0.05);
     border: none;
+    -webkit-appearance: none;
+    outline: none;
     width: 36px;
     height: 36px;
     display: flex;
@@ -667,7 +669,7 @@ body {
 }
 
 .fav-btn i {
-    color: #ef4444;
+    color: #ef4444 !important;
     font-size: 1.1rem;
 }
 
@@ -713,10 +715,10 @@ body {
 
 .btn-book {
     background: var(--primary);
-    color: var(--white);
+    color: var(--white) !important;
     padding: 10px 14px;
     border-radius: 6px;
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 600;
     font-size: 0.9rem;
     display: flex;
@@ -730,7 +732,8 @@ body {
     background: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
-    color: var(--white);
+    color: var(--white) !important;
+    text-decoration: none !important;
 }
 
 /* 5. Mini-Lab Section (Interactive Python simulator) */
