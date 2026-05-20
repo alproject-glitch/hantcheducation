@@ -1,6 +1,6 @@
-# 🎓 Bimbel AN-NUR Interactive Portal & SQL Lab
+# 🎓 Hantech Education Interactive Portal & SQL Lab
 
-Portal pembelajaran interaktif bimbingan belajar SMP unggulan **AN-NUR**. Proyek portofolio ini menggabungkan desain web premium modern (Glassmorphism & Bento Layout) dengan modul pembelajaran interaktif berupa **Simulator Logika Python** dan **Interactive SQL Playground** yang berjalan 100% di sisi klien (*client-side*).
+Portal pembelajaran interaktif bimbingan belajar SMP unggulan **Hantech Education**. Proyek portofolio ini menggabungkan desain web premium modern (Glassmorphism & Bento Layout) dengan modul pembelajaran interaktif berupa **Simulator Logika Python** dan **Interactive SQL Playground** yang berjalan 100% di sisi klien (*client-side*).
 
 ---
 
