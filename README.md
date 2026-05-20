@@ -53,8 +53,6 @@ Les/
 
 ## 🚀 Cara Publikasi di GitHub Pages (Live Page)
 
-Karena proyek ini bersifat **statik penuh** (100% Client-Side tanpa backend database), proyek ini sangat ideal untuk di-host secara gratis di **GitHub Pages** sebagai portofolio Anda.
-
 Berikut langkah-langkah mudah untuk mempublikasikannya:
 
 1. **Buat Repositori Baru di GitHub**:
