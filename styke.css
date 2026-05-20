@@ -2184,3 +2184,878 @@ body {
         width: 100%;
     }
 }
+
+/* ==========================================================================
+   8. STEM & LANGUAGE INTERACTIVE MULTIVERSE PLAYGROUND
+   ========================================================================== */
+.playground-section {
+    padding: 100px 0;
+    background: radial-gradient(circle at top left, #1e1b4b 0%, #0f172a 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.playground-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15), transparent 50%),
+                radial-gradient(circle at 20% 30%, rgba(13, 148, 136, 0.15), transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.playground-tabs-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.playground-tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.playground-tabs {
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+}
+
+.playground-tab {
+    background: transparent;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 100px;
+    color: var(--slate-300);
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.playground-tab i {
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.playground-tab:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.playground-tab.active {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.4);
+}
+
+.playground-tab.active[data-tab="math"] {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+.playground-tab.active[data-tab="physics"] {
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+}
+.playground-tab.active[data-tab="biology"] {
+    background: linear-gradient(135deg, #10b981, #047857);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+.playground-tab.active[data-tab="english"] {
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+}
+.playground-tab.active[data-tab="robotics"] {
+    background: linear-gradient(135deg, #f43f5e, #be123c);
+    box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
+}
+.playground-tab.active[data-tab="iot"] {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+}
+
+.playground-panes {
+    position: relative;
+    z-index: 2;
+}
+
+.playground-pane {
+    display: none;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.playground-pane.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bento Layout inside Playgrounds */
+.playground-bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.playground-card {
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.playground-card.visual-card {
+    min-height: 400px;
+}
+
+.playground-header {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playground-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+}
+
+.playground-body {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Sliders, Inputs, Controls */
+.control-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-label {
+    font-size: 0.9rem;
+    color: var(--slate-300);
+    font-weight: 600;
+}
+
+.control-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    background: rgba(45, 212, 191, 0.1);
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-family: monospace;
+}
+
+.physics-val {
+    color: var(--secondary-light);
+    background: rgba(165, 180, 252, 0.1);
+}
+
+.control-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    transition: var(--transition);
+}
+
+.control-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--primary);
+    transition: var(--transition);
+}
+
+.control-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.control-select {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.control-select:focus {
+    border-color: var(--primary);
+}
+
+/* Canvas overlay & outputs */
+.canvas-container {
+    background: #0b0f19;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+}
+
+.canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 325px;
+}
+
+/* Math Visuals */
+.math-steps {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.math-step-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+}
+
+.math-step-row:last-child {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.step-label {
+    color: var(--slate-400);
+}
+
+.step-val {
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.step-formula {
+    color: var(--primary-light);
+    font-weight: 600;
+}
+
+/* Physics Visuals */
+.telemetry-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.telemetry-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    padding: 15px;
+    text-align: center;
+}
+
+.telemetry-card h4 {
+    font-size: 0.75rem;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+}
+
+.telemetry-card p {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--secondary-light);
+    font-family: monospace;
+}
+
+/* Biology Visuals */
+.dna-input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dna-input {
+    flex-grow: 1;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    color: var(--white);
+    font-family: monospace;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    outline: none;
+}
+
+.dna-templates {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.btn-template {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--slate-300);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-template:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: var(--white);
+}
+
+.translation-visualizer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #090d16;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 250px;
+}
+
+.bio-strand-title {
+    font-size: 0.75rem;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+
+.bio-sequence {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.bio-nucleotide {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.nucl-a { background: #ef4444; }
+.nucl-t { background: #3b82f6; }
+.nucl-u { background: #f59e0b; }
+.nucl-c { background: #10b981; }
+.nucl-g { background: #8b5cf6; }
+
+.codon-chain {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.codon-amino-block {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: scaleInCodon 0.3s ease forwards;
+}
+
+.codon-amino-block .codon-triplet {
+    font-family: monospace;
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-bottom: 2px;
+}
+
+@keyframes scaleInCodon {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* English Visuals */
+.sentence-builder-output {
+    background: #090d16;
+    border-radius: var(--radius-md);
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.english-sentence-parsed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.gram-token {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.gram-word {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.gram-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--accent);
+    background: rgba(245, 158, 11, 0.15);
+    padding: 2px 8px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.tag-sub { color: #3b82f6; background: rgba(59, 130, 246, 0.15); }
+.tag-aux { color: #ec4899; background: rgba(236, 72, 153, 0.15); }
+.tag-verb { color: #10b981; background: rgba(16, 185, 129, 0.15); }
+.tag-obj { color: #0ea5e9; background: rgba(14, 165, 233, 0.15); }
+
+.tense-formula-card {
+    background: rgba(245, 158, 11, 0.04);
+    border: 1px dashed rgba(245, 158, 11, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tense-formula-card span.lbl {
+    font-size: 0.75rem;
+    color: var(--slate-400);
+    text-transform: uppercase;
+}
+
+.tense-formula-card p.val {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.tense-formula-card code {
+    font-family: monospace;
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Robotics Visuals */
+.robotics-grid-arena {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 4px;
+    background: #090d16;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-width: 320px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+}
+
+.robot-cell {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.robot-cell.obstacle {
+    background: #334155;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.robot-cell.obstacle i {
+    color: var(--slate-400);
+    font-size: 1rem;
+}
+
+.robot-cell.portal {
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px dashed rgba(244, 63, 94, 0.4);
+}
+
+.robot-cell.portal i {
+    color: #f43f5e;
+    font-size: 1.2rem;
+    animation: pulseGoal 1.5s infinite alternate;
+}
+
+@keyframes pulseGoal {
+    from { transform: scale(0.9); opacity: 0.7; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+
+.robot-entity {
+    color: #f43f5e;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.6));
+    z-index: 2;
+}
+
+.cmd-tray {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    min-height: 52px;
+    margin-bottom: 20px;
+}
+
+.cmd-token {
+    background: rgba(244, 63, 94, 0.15);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #f43f5e;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cmd-token i.remove-cmd {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.cmd-token i.remove-cmd:hover {
+    opacity: 1;
+    color: var(--white);
+}
+
+.robot-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.btn-robot-cmd {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--slate-300);
+    padding: 8px 4px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-robot-cmd:hover {
+    background: rgba(244, 63, 94, 0.1);
+    border-color: #f43f5e;
+    color: var(--white);
+}
+
+/* IoT Simulator Styling */
+.iot-simulation-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.esp32-breadboard {
+    background: #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    border: 4px solid #cbd5e1;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+    border-bottom-width: 8px;
+}
+
+.esp32-chip {
+    background: #1e293b;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #475569;
+}
+
+.esp32-chip span {
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: bold;
+}
+
+.esp32-chip .chip-core {
+    background: #0f172a;
+    border-radius: 2px;
+    color: #38bdf8;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.breadboard-components {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background: #cbd5e1;
+    border-radius: 4px;
+    border: 1px inset rgba(0,0,0,0.1);
+}
+
+.virtual-led {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.virtual-led .led-bulb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #475569;
+    border: 2px solid #334155;
+    transition: all 0.3s ease;
+}
+
+.virtual-led span {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #475569;
+}
+
+.virtual-led.led-red.active .led-bulb {
+    background: #ef4444;
+    border-color: #fca5a5;
+    box-shadow: 0 0 15px #ef4444, 0 0 30px #ef4444;
+}
+
+.virtual-led.led-green.active .led-bulb {
+    background: #22c55e;
+    border-color: #86efac;
+    box-shadow: 0 0 15px #22c55e, 0 0 30px #22c55e;
+}
+
+.virtual-sensor {
+    background: #3b82f6;
+    border-radius: 4px;
+    padding: 6px 12px;
+    color: var(--white);
+    font-family: monospace;
+    font-size: 0.65rem;
+    font-weight: bold;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    border: 1px solid #1d4ed8;
+}
+
+.iot-cloud-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #090d16;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+}
+
+.cloud-gauge-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.cloud-gauge {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    text-align: center;
+}
+
+.cloud-gauge span {
+    font-size: 0.7rem;
+    color: var(--slate-400);
+    text-transform: uppercase;
+}
+
+.cloud-gauge p {
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: monospace;
+    color: #0ea5e9;
+}
+
+.switch-panel {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.virtual-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.switch-track {
+    width: 42px;
+    height: 22px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: var(--transition);
+}
+
+.switch-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--slate-400);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: var(--transition);
+}
+
+.virtual-switch.active .switch-track {
+    background: rgba(14, 165, 233, 0.2);
+    border-color: #0ea5e9;
+}
+
+.virtual-switch.active .switch-thumb {
+    background: #0ea5e9;
+    transform: translateX(20px);
+    box-shadow: 0 0 8px #0ea5e9;
+}
+
+.virtual-switch span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--slate-300);
+}
+
+/* Responsiveness for Bento Hub */
+@media (max-width: 992px) {
+    .playground-bento {
+        grid-template-columns: 1fr;
+    }
+}

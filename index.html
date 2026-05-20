@@ -46,6 +46,7 @@
                 <ul>
                     <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
                     <li><a href="#program"><i class="fa-solid fa-book-open"></i> Program</a></li>
+                    <li><a href="#playground-hub"><i class="fa-solid fa-gamepad"></i> Playgrounds</a></li>
                     <li><a href="#minilab"><i class="fa-solid fa-flask"></i> Mini-Lab</a></li>
                     <li><a href="#sqllab"><i class="fa-solid fa-database"></i> SQL Lab</a></li>
                     <li><a href="#kontak"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
@@ -270,6 +271,421 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEM & Language Multiverse Playground Section -->
+    <section id="playground-hub" class="playground-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title"><i class="fa-solid fa-gamepad"></i> Multiverse Playground Hub</span>
+                <h2 style="color: var(--white);">Pusat Simulasi STEM & Bahasa</h2>
+                <p style="color: var(--slate-300);">Cobalah modul eksperimen interaktif di bawah ini untuk belajar sains, robotika, dan bahasa secara visual!</p>
+            </div>
+
+            <!-- Tabbed Menu -->
+            <div class="playground-tabs-container">
+                <div class="playground-tabs">
+                    <button class="playground-tab active" data-tab="math"><i class="fa-solid fa-calculator"></i> 📐 Matematika</button>
+                    <button class="playground-tab" data-tab="physics"><i class="fa-solid fa-atom"></i> 🚀 Fisika</button>
+                    <button class="playground-tab" data-tab="biology"><i class="fa-solid fa-dna"></i> 🧬 Biologi</button>
+                    <button class="playground-tab" data-tab="english"><i class="fa-solid fa-language"></i> 🗣️ B. Inggris</button>
+                    <button class="playground-tab" data-tab="robotics"><i class="fa-solid fa-robot"></i> 🤖 Robotik</button>
+                    <button class="playground-tab" data-tab="iot"><i class="fa-solid fa-microchip"></i> 🌐 IoT</button>
+                </div>
+            </div>
+
+            <!-- Playground Panels -->
+            <div class="playground-panes">
+                
+                <!-- 1. Matematika Pane -->
+                <div class="playground-pane active" id="pane-math">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-chart-line"></i> Visualisasi Segitiga Pythagoras</h3>
+                                <span class="badge-math" style="font-size: 0.75rem; background: rgba(45, 212, 191, 0.1); color: var(--primary-light); padding: 4px 10px; border-radius: 100px;">Live Draw</span>
+                            </div>
+                            <div class="playground-body" style="justify-content: flex-start; padding: 20px;">
+                                <div class="canvas-container">
+                                    <canvas id="mathCanvas"></canvas>
+                                </div>
+                                <div class="math-steps">
+                                    <div class="math-step-row">
+                                        <span class="step-label">Rumus Dasar</span>
+                                        <span class="step-formula">c² = a² + b²</span>
+                                    </div>
+                                    <div class="math-step-row">
+                                        <span class="step-label">Langkah Kalkulasi</span>
+                                        <span class="step-val" id="mathStepCalc">c = √(30² + 40²) = √(900 + 1600) = √2500</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-sliders"></i> Kontrol Dimensi & Telemetry</h3>
+                            </div>
+                            <div class="playground-body">
+                                <div class="control-group">
+                                    <div class="control-label-row">
+                                        <span class="control-label">Sisi A (Alas / Base)</span>
+                                        <span class="control-value" id="mathValA">30px</span>
+                                    </div>
+                                    <input type="range" id="mathSliderA" class="control-slider" min="15" max="100" value="40">
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label-row">
+                                        <span class="control-label">Sisi B (Tinggi / Height)</span>
+                                        <span class="control-value" id="mathValB">40px</span>
+                                    </div>
+                                    <input type="range" id="mathSliderB" class="control-slider" min="15" max="100" value="50">
+                                </div>
+
+                                <div class="math-steps" style="margin-top: 10px; background: rgba(13, 148, 136, 0.04); border-color: rgba(13, 148, 136, 0.15);">
+                                    <div class="math-step-row">
+                                        <span class="step-label">Sisi Miring (Hypotenuse) C</span>
+                                        <span class="step-val" id="mathValC" style="color: var(--primary-light); font-size: 1.1rem;">64.03 px</span>
+                                    </div>
+                                    <div class="math-step-row">
+                                        <span class="step-label">Sudut Alas θ (Theta)</span>
+                                        <span class="step-val" id="mathAngleTheta">51.34°</span>
+                                    </div>
+                                    <div class="math-step-row">
+                                        <span class="step-label">Sudut Atas β (Beta)</span>
+                                        <span class="step-val" id="mathAngleBeta">38.66°</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Fisika Pane -->
+                <div class="playground-pane" id="pane-physics">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-meteor"></i> Trajektori Gerak Parabola</h3>
+                                <button class="btn btn-secondary" id="physicsResetBtn" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fa-solid fa-arrow-rotate-left"></i> Reset</button>
+                            </div>
+                            <div class="playground-body" style="justify-content: flex-start; padding: 20px;">
+                                <div class="canvas-container">
+                                    <canvas id="physicsCanvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-gamepad"></i> Telemetry & Peluncur</h3>
+                            </div>
+                            <div class="playground-body">
+                                <div class="telemetry-dashboard">
+                                    <div class="telemetry-card">
+                                        <h4>Jangkauan (R)</h4>
+                                        <p id="physTelemetryRange">0.00 m</p>
+                                    </div>
+                                    <div class="telemetry-card">
+                                        <h4>Tinggi Max (H)</h4>
+                                        <p id="physTelemetryHeight">0.00 m</p>
+                                    </div>
+                                    <div class="telemetry-card">
+                                        <h4>Waktu Total (T)</h4>
+                                        <p id="physTelemetryTime">0.00 s</p>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label-row">
+                                        <span class="control-label">Sudut Elevasi Launch Angle</span>
+                                        <span class="control-value physics-val" id="physicsValAngle">45°</span>
+                                    </div>
+                                    <input type="range" id="physicsAngle" class="control-slider" min="10" max="90" value="45" style="filter: hue-rotate(90deg);">
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label-row">
+                                        <span class="control-label">Kecepatan Awal (v₀)</span>
+                                        <span class="control-value physics-val" id="physicsValVelocity">20 m/s</span>
+                                    </div>
+                                    <input type="range" id="physicsVelocity" class="control-slider" min="5" max="35" value="20" style="filter: hue-rotate(90deg);">
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="physicsGravity">Medan Gravitasi (g)</label>
+                                    <select id="physicsGravity" class="control-select">
+                                        <option value="9.8">Bumi (9.8 m/s²)</option>
+                                        <option value="1.62">Bulan (1.62 m/s²)</option>
+                                        <option value="3.71">Mars (3.71 m/s²)</option>
+                                        <option value="24.79">Yupiter (24.79 m/s²)</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-full" id="physicsLaunchBtn" style="background: linear-gradient(135deg, var(--secondary), var(--secondary-dark)); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); color: var(--white); font-weight: 700; margin-top: 10px;">
+                                    <i class="fa-solid fa-rocket animate-launch"></i> Tembakkan Proyektil!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Biologi Pane -->
+                <div class="playground-pane" id="pane-biology">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-code-branch"></i> Visualisasi Transkripsi & Translasi DNA</h3>
+                            </div>
+                            <div class="playground-body" style="justify-content: flex-start; padding: 20px;">
+                                <div class="translation-visualizer">
+                                    <div>
+                                        <span class="bio-strand-title"><i class="fa-solid fa-key"></i> mRNA Transkripsi complementary (5' → 3')</span>
+                                        <div class="bio-sequence" id="bioMrnaStrand">
+                                            <span class="bio-nucleotide nucl-u">U</span>
+                                            <span class="bio-nucleotide nucl-a">A</span>
+                                            <span class="bio-nucleotide nucl-c">C</span>
+                                            <span class="bio-nucleotide nucl-g">G</span>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                                        <span class="bio-strand-title"><i class="fa-solid fa-link"></i> Rantai Asam Amino (Polipeptida / Protein)</span>
+                                        <div class="codon-chain" id="bioAminoChain">
+                                            <div class="codon-amino-block">
+                                                <span class="codon-triplet">AUG</span>
+                                                <span>Met (Start)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-vials"></i> DNA Sequence Sandbox</h3>
+                            </div>
+                            <div class="playground-body">
+                                <div class="control-group">
+                                    <label class="control-label" for="dnaInput">Urutan Rantai DNA Kode (3' → 5')</label>
+                                    <div class="dna-input-area">
+                                        <input type="text" id="dnaInput" class="dna-input" value="TACGGCATATACTAG" placeholder="Ketik basa DNA (A, T, G, C)..." maxlength="30">
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--slate-400);">*Hanya karakter A, T, G, dan C yang diijinkan. Panjang kelipatan 3 disarankan.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <span class="control-label">Template Struktur Protein Gen Populer:</span>
+                                    <div class="dna-templates">
+                                        <button class="btn-template" data-dna="TACGGCATATACTAG">Insulin (Awal)</button>
+                                        <button class="btn-template" data-dna="TACCTGTTCAGCACT">Hemoglobin (Kodon)</button>
+                                        <button class="btn-template" data-dna="TACTAACCGGATTAC">Amilase Enzim</button>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-full" id="dnaTranslateBtn" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); color: var(--white); font-weight: 700; margin-top: 10px;">
+                                    <i class="fa-solid fa-dna"></i> Transkripsi & Translasikan DNA!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Bahasa Inggris Pane -->
+                <div class="playground-pane" id="pane-english">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-spell-check"></i> English Sentence Parser</h3>
+                            </div>
+                            <div class="playground-body" style="justify-content: flex-start; padding: 20px;">
+                                <div class="sentence-builder-output">
+                                    <div>
+                                        <span class="bio-strand-title" style="color: var(--accent);"><i class="fa-solid fa-quote-left"></i> Kalimat Positif (+)</span>
+                                        <div class="english-sentence-parsed" id="engPositiveSentence">
+                                            <!-- Rendered dynamically -->
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="bio-strand-title" style="color: #ef4444;"><i class="fa-solid fa-ban"></i> Kalimat Negatif (-)</span>
+                                        <p id="engNegativeText" style="font-weight: 600; font-size: 1.05rem; color: var(--slate-300);">I do not learn English.</p>
+                                    </div>
+                                    <div>
+                                        <span class="bio-strand-title" style="color: #3b82f6;"><i class="fa-solid fa-circle-question"></i> Kalimat Tanya (?)</span>
+                                        <p id="engQuestionText" style="font-weight: 600; font-size: 1.05rem; color: var(--slate-300);">Do I learn English?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-book"></i> Tense Builder & Conjugator</h3>
+                            </div>
+                            <div class="playground-body">
+                                <div class="control-group">
+                                    <label class="control-label" for="englishVerb">Kata Kerja Dasar (Verb 1)</label>
+                                    <input type="text" id="englishVerb" class="dna-input" value="study" placeholder="Ketik verb... (contoh: study, learn, write, go)" style="letter-spacing: normal; font-family: var(--font-main);">
+                                    <span style="font-size: 0.75rem; color: var(--slate-400);">*Gunakan kata kerja intransitif/transitif dalam bahasa inggris biasa.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="englishTense">Pilih Jenis English Tenses</label>
+                                    <select id="englishTense" class="control-select">
+                                        <option value="present">Simple Present Tense</option>
+                                        <option value="continuous">Present Continuous Tense</option>
+                                        <option value="past">Simple Past Tense</option>
+                                        <option value="future">Simple Future Tense</option>
+                                    </select>
+                                </div>
+
+                                <div class="tense-formula-card">
+                                    <span class="lbl"><i class="fa-solid fa-circle-info"></i> Pola Rumus / Formula Struktur</span>
+                                    <p class="val" id="engFormulaPattern">Subject + Verb 1 (s/es) + Object + Adverb</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Robotik Pane -->
+                <div class="playground-pane" id="pane-robotics">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-map-location"></i> Robot Path Arena (5x5)</h3>
+                                <button class="btn btn-secondary" id="robotClearBtn" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fa-solid fa-eraser"></i> Clear</button>
+                            </div>
+                            <div class="playground-body" style="padding: 20px;">
+                                <div class="robotics-grid-arena" id="roboticsArena">
+                                    <!-- Dynamic 5x5 grid cells generated via JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-gamepad"></i> Command Sequence Controller</h3>
+                            </div>
+                            <div class="playground-body">
+                                <span class="control-label" style="margin-bottom: 8px; display: block;">Baki Urutan Instruksi (Instruction Tray):</span>
+                                <div class="cmd-tray" id="robotCmdTray">
+                                    <!-- Queued commands go here -->
+                                    <span class="gray" style="font-size: 0.8rem; color: var(--slate-500); width: 100%; text-align: center; line-height: 2.5;">Baki kosong. Klik tombol di bawah untuk menambah langkah.</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <span class="control-label">Tombol Gerakan Robot:</span>
+                                    <div class="robot-buttons">
+                                        <button class="btn-robot-cmd" data-cmd="FORWARD"><i class="fa-solid fa-arrow-up" style="color: #f43f5e;"></i> FORWARD</button>
+                                        <button class="btn-robot-cmd" data-cmd="LEFT"><i class="fa-solid fa-rotate-left" style="color: #f59e0b;"></i> LEFT</button>
+                                        <button class="btn-robot-cmd" data-cmd="RIGHT"><i class="fa-solid fa-rotate-right" style="color: #0ea5e9;"></i> RIGHT</button>
+                                        <button class="btn-robot-cmd" data-cmd="BACKWARD"><i class="fa-solid fa-arrow-down" style="color: var(--slate-400);"></i> BACK</button>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-full" id="robotExecuteBtn" style="background: linear-gradient(135deg, #f43f5e, #be123c); box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); color: var(--white); font-weight: 700; margin-top: 10px;">
+                                    <i class="fa-solid fa-play"></i> Jalankan Instruksi Robot!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. IoT Pane -->
+                <div class="playground-pane" id="pane-iot">
+                    <div class="playground-bento">
+                        <div class="playground-card visual-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-bolt-lightning"></i> Virtual ESP32 Breadboard</h3>
+                            </div>
+                            <div class="playground-body" style="padding: 20px;">
+                                <div class="iot-simulation-board">
+                                    <div class="esp32-breadboard">
+                                        <div class="esp32-chip">
+                                            <span>EN</span>
+                                            <div class="chip-core">ESP32-WROOM</div>
+                                            <span>BOOT</span>
+                                        </div>
+                                        <div class="breadboard-components">
+                                            <div class="virtual-led led-red" id="ledRed">
+                                                <div class="led-bulb"></div>
+                                                <span>D2 (RED)</span>
+                                            </div>
+                                            <div class="virtual-led led-green" id="ledGreen">
+                                                <div class="led-bulb"></div>
+                                                <span>D4 (GRN)</span>
+                                            </div>
+                                            <div class="virtual-sensor">
+                                                DHT22 SENSOR
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="playground-card">
+                            <div class="playground-header">
+                                <h3><i class="fa-solid fa-cloud-sun"></i> IoT Cloud telemetry Dashboard</h3>
+                            </div>
+                            <div class="playground-body" style="padding: 20px;">
+                                <div class="iot-cloud-dashboard">
+                                    <div class="cloud-gauge-row">
+                                        <div class="cloud-gauge">
+                                            <span>Temperature</span>
+                                            <p id="iotDashboardTemp">28.0°C</p>
+                                        </div>
+                                        <div class="cloud-gauge">
+                                            <span>Humidity</span>
+                                            <p id="iotDashboardHumid" style="color: #10b981;">60% RH</p>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-container" style="min-height: 120px; border-radius: 4px;">
+                                        <canvas id="iotChart" style="height: 120px;"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="switch-panel">
+                                    <div class="virtual-switch" id="switchD2">
+                                        <div class="switch-track">
+                                            <div class="switch-thumb"></div>
+                                        </div>
+                                        <span>GPIO 2 (Red LED)</span>
+                                    </div>
+
+                                    <div class="virtual-switch" id="switchD4">
+                                        <div class="switch-track">
+                                            <div class="switch-thumb"></div>
+                                        </div>
+                                        <span>GPIO 4 (Green LED)</span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group" style="margin-top: 15px;">
+                                    <div class="control-label-row">
+                                        <span class="control-label" style="font-size: 0.8rem;">Simulasi Suhu DHT22</span>
+                                        <span class="control-value" id="iotSliderTempVal" style="font-size: 0.8rem; background: rgba(14, 165, 233, 0.1); color: #0ea5e9;">28°C</span>
+                                    </div>
+                                    <input type="range" id="iotSliderTemp" class="control-slider" min="15" max="45" value="28" style="filter: hue-rotate(180deg); height: 4px;">
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label-row">
+                                        <span class="control-label" style="font-size: 0.8rem;">Simulasi Kelembapan DHT22</span>
+                                        <span class="control-value" id="iotSliderHumidVal" style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.1); color: #10b981;">60%</span>
+                                    </div>
+                                    <input type="range" id="iotSliderHumid" class="control-slider" min="20" max="95" value="60" style="filter: hue-rotate(240deg); height: 4px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1675,6 +2091,829 @@
                 `;
                 document.head.appendChild(style);
             }
+
+             // Initial check for admin session
+            updateAdminVisibility();
+
+            // ==========================================================================
+            // STEM & LANGUAGE INTERACTIVE MULTIVERSE PLAYGROUND ENGINES
+            // ==========================================================================
+
+            // Tab Switching Logic
+            const tabButtons = document.querySelectorAll('.playground-tab');
+            const tabPanes = document.querySelectorAll('.playground-pane');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    const pane = document.getElementById(`pane-${tabId}`);
+                    if (pane) pane.classList.add('active');
+
+                    // Trigger playground canvas draw or initialization based on the active tab
+                    if (tabId === 'math') {
+                        drawMathTriangle();
+                    } else if (tabId === 'physics') {
+                        drawPhysicsGrid();
+                    } else if (tabId === 'robotics') {
+                        initRoboticsArena();
+                    } else if (tabId === 'iot') {
+                        initIotDashboard();
+                    }
+                });
+            });
+
+            // --------------------------------------------------------------------------
+            // 1. Matematika (Pythagoras & Triangle Visualizer)
+            // --------------------------------------------------------------------------
+            const mathCanvas = document.getElementById('mathCanvas');
+            const mathCtx = mathCanvas.getContext('2d');
+            const mathSliderA = document.getElementById('mathSliderA');
+            const mathSliderB = document.getElementById('mathSliderB');
+            const mathValA = document.getElementById('mathValA');
+            const mathValB = document.getElementById('mathValB');
+            const mathValC = document.getElementById('mathValC');
+            const mathAngleTheta = document.getElementById('mathAngleTheta');
+            const mathAngleBeta = document.getElementById('mathAngleBeta');
+            const mathStepCalc = document.getElementById('mathStepCalc');
+
+            function drawMathTriangle() {
+                const width = mathCanvas.parentElement.clientWidth || 320;
+                const height = 320;
+                mathCanvas.width = width;
+                mathCanvas.height = height;
+
+                const valA = parseFloat(mathSliderA.value);
+                const valB = parseFloat(mathSliderB.value);
+
+                mathValA.textContent = valA + " px";
+                mathValB.textContent = valB + " px";
+
+                // Calculations
+                const c = Math.sqrt(valA * valA + valB * valB);
+                const theta = Math.asin(valB / c) * (180 / Math.PI);
+                const beta = 90 - theta;
+
+                mathValC.textContent = c.toFixed(2) + " px";
+                mathAngleTheta.textContent = theta.toFixed(1) + "°";
+                mathAngleBeta.textContent = beta.toFixed(1) + "°";
+
+                mathStepCalc.textContent = `c = √(${valA}² + ${valB}²) = √(${valA * valA} + ${valB * valB}) = √${valA * valA + valB * valB} = ${c.toFixed(2)} px`;
+
+                // Draw Grid
+                mathCtx.clearRect(0, 0, width, height);
+                mathCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                mathCtx.lineWidth = 1;
+                const gridSize = 20;
+                for (let x = 0; x < width; x += gridSize) {
+                    mathCtx.beginPath();
+                    mathCtx.moveTo(x, 0);
+                    mathCtx.lineTo(x, height);
+                    mathCtx.stroke();
+                }
+                for (let y = 0; y < height; y += gridSize) {
+                    mathCtx.beginPath();
+                    mathCtx.moveTo(0, y);
+                    mathCtx.lineTo(width, y);
+                    mathCtx.stroke();
+                }
+
+                // Drawing Scales
+                const scale = Math.min((width - 80) / valA, (height - 80) / valB, 2.5);
+                const triangleWidth = valA * scale;
+                const triangleHeight = valB * scale;
+
+                // Margins
+                const originX = 50;
+                const originY = height - 50;
+
+                const cornerRightX = originX + triangleWidth;
+                const cornerRightY = originY;
+
+                const cornerTopX = originX;
+                const cornerTopY = originY - triangleHeight;
+
+                // Draw Triangle Path
+                mathCtx.beginPath();
+                mathCtx.moveTo(originX, originY);
+                mathCtx.lineTo(cornerRightX, cornerRightY);
+                mathCtx.lineTo(cornerTopX, cornerTopY);
+                mathCtx.closePath();
+
+                mathCtx.lineWidth = 4;
+                mathCtx.strokeStyle = '#2dd4bf'; // Glowing cyan
+                mathCtx.shadowBlur = 10;
+                mathCtx.shadowColor = '#2dd4bf';
+                mathCtx.fillStyle = 'rgba(45, 212, 191, 0.15)';
+                mathCtx.fill();
+                mathCtx.stroke();
+                mathCtx.shadowBlur = 0; // reset glow
+
+                // Right angle square indicator
+                const sqSize = 12;
+                mathCtx.beginPath();
+                mathCtx.moveTo(originX, originY - sqSize);
+                mathCtx.lineTo(originX + sqSize, originY - sqSize);
+                mathCtx.lineTo(originX + sqSize, originY);
+                mathCtx.lineWidth = 2;
+                mathCtx.strokeStyle = '#2dd4bf';
+                mathCtx.stroke();
+
+                // Draw Labels
+                mathCtx.fillStyle = '#ffffff';
+                mathCtx.font = 'bold 12px Plus Jakarta Sans, sans-serif';
+                
+                // Side A label
+                mathCtx.fillText(`a = ${valA}`, originX + triangleWidth / 2 - 15, originY + 20);
+                
+                // Side B label
+                mathCtx.fillText(`b = ${valB}`, originX - 35, originY - triangleHeight / 2);
+
+                // Side C label (Hypotenuse)
+                mathCtx.fillText(`c = ${c.toFixed(1)}`, originX + triangleWidth / 2 + 10, originY - triangleHeight / 2 - 5);
+
+                // Draw theta angle arc
+                mathCtx.beginPath();
+                mathCtx.arc(cornerRightX, cornerRightY, 20, Math.PI, Math.PI + (theta * Math.PI / 180));
+                mathCtx.strokeStyle = '#6366f1';
+                mathCtx.lineWidth = 2;
+                mathCtx.stroke();
+                mathCtx.fillText(`θ`, cornerRightX - 30, cornerRightY - 8);
+            }
+
+            mathSliderA.addEventListener('input', drawMathTriangle);
+            mathSliderB.addEventListener('input', drawMathTriangle);
+            
+            // Trigger first draw on load
+            setTimeout(drawMathTriangle, 100);
+
+            // --------------------------------------------------------------------------
+            // 2. Fisika (Projectile Motion Simulator)
+            // --------------------------------------------------------------------------
+            const physicsCanvas = document.getElementById('physicsCanvas');
+            const physicsCtx = physicsCanvas.getContext('2d');
+            const physicsAngle = document.getElementById('physicsAngle');
+            const physicsVelocity = document.getElementById('physicsVelocity');
+            const physicsGravity = document.getElementById('physicsGravity');
+            const physicsLaunchBtn = document.getElementById('physicsLaunchBtn');
+            const physicsResetBtn = document.getElementById('physicsResetBtn');
+
+            const physicsValAngle = document.getElementById('physicsValAngle');
+            const physicsValVelocity = document.getElementById('physicsValVelocity');
+
+            const physTelemetryRange = document.getElementById('physTelemetryRange');
+            const physTelemetryHeight = document.getElementById('physTelemetryHeight');
+            const physTelemetryTime = document.getElementById('physTelemetryTime');
+
+            let trajectoryPoints = [];
+            let physicsAnimationId = null;
+
+            function drawPhysicsGrid() {
+                const width = physicsCanvas.parentElement.clientWidth || 320;
+                const height = 320;
+                physicsCanvas.width = width;
+                physicsCanvas.height = height;
+
+                physicsCtx.clearRect(0, 0, width, height);
+
+                // Grid
+                physicsCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                physicsCtx.lineWidth = 1;
+                const gridSize = 20;
+                for (let x = 0; x < width; x += gridSize) {
+                    physicsCtx.beginPath();
+                    physicsCtx.moveTo(x, 0);
+                    physicsCtx.lineTo(x, height);
+                    physicsCtx.stroke();
+                }
+                for (let y = 0; y < height; y += gridSize) {
+                    physicsCtx.beginPath();
+                    physicsCtx.moveTo(0, y);
+                    physicsCtx.lineTo(width, y);
+                    physicsCtx.stroke();
+                }
+
+                // Ground Line
+                physicsCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                physicsCtx.lineWidth = 3;
+                physicsCtx.beginPath();
+                physicsCtx.moveTo(0, height - 30);
+                physicsCtx.lineTo(width, height - 30);
+                physicsCtx.stroke();
+
+                // Draw existing points if any
+                if (trajectoryPoints.length > 1) {
+                    physicsCtx.beginPath();
+                    physicsCtx.moveTo(trajectoryPoints[0].x, trajectoryPoints[0].y);
+                    for (let i = 1; i < trajectoryPoints.length; i++) {
+                        physicsCtx.lineTo(trajectoryPoints[i].x, trajectoryPoints[i].y);
+                    }
+                    physicsCtx.lineWidth = 3;
+                    physicsCtx.strokeStyle = '#6366f1'; // Glowing Indigo
+                    physicsCtx.shadowBlur = 8;
+                    physicsCtx.shadowColor = '#6366f1';
+                    physicsCtx.stroke();
+                    physicsCtx.shadowBlur = 0;
+                }
+            }
+
+            function launchProjectile() {
+                if (physicsAnimationId) {
+                    cancelAnimationFrame(physicsAnimationId);
+                }
+
+                const angleDeg = parseFloat(physicsAngle.value);
+                const velocity = parseFloat(physicsVelocity.value);
+                const gravity = parseFloat(physicsGravity.value);
+
+                physicsValAngle.textContent = angleDeg + "°";
+                physicsValVelocity.textContent = velocity + " m/s";
+
+                const angleRad = angleDeg * Math.PI / 180;
+
+                // Formulas
+                const tFlight = (2 * velocity * Math.sin(angleRad)) / gravity;
+                const hMax = (velocity * velocity * Math.sin(angleRad) * Math.sin(angleRad)) / (2 * gravity);
+                const range = (velocity * velocity * Math.sin(2 * angleRad)) / gravity;
+
+                physTelemetryRange.textContent = range.toFixed(2) + " m";
+                physTelemetryHeight.textContent = hMax.toFixed(2) + " m";
+                physTelemetryTime.textContent = tFlight.toFixed(2) + " s";
+
+                const width = physicsCanvas.width;
+                const height = physicsCanvas.height;
+
+                // Draw Scaling based on ranges
+                const originX = 20;
+                const originY = height - 30;
+                const scaleX = (width - 40) / Math.max(range, 40);
+                const scaleY = (height - 80) / Math.max(hMax, 15);
+
+                trajectoryPoints = [];
+                let animTime = 0;
+                const animDuration = 2; // seconds
+                const fps = 60;
+                const totalFrames = animDuration * fps;
+                const timeStep = tFlight / totalFrames;
+
+                function animate() {
+                    if (animTime > tFlight) {
+                        return;
+                    }
+
+                    // Compute physical coords
+                    const xPhys = velocity * animTime * Math.cos(angleRad);
+                    const yPhys = (velocity * animTime * Math.sin(angleRad)) - (0.5 * gravity * animTime * animTime);
+
+                    // Map to Canvas pixels
+                    const xPix = originX + (xPhys * scaleX);
+                    const yPix = originY - (yPhys * scaleY);
+
+                    trajectoryPoints.push({ x: xPix, y: yPix });
+                    
+                    drawPhysicsGrid();
+
+                    // Draw launcher nozzle indicator
+                    physicsCtx.beginPath();
+                    physicsCtx.arc(originX, originY, 8, 0, 2 * Math.PI);
+                    physicsCtx.fillStyle = '#6366f1';
+                    physicsCtx.fill();
+
+                    // Draw rocket projectile ball
+                    physicsCtx.beginPath();
+                    physicsCtx.arc(xPix, yPix, 6, 0, 2 * Math.PI);
+                    physicsCtx.fillStyle = '#f59e0b';
+                    physicsCtx.shadowBlur = 10;
+                    physicsCtx.shadowColor = '#f59e0b';
+                    physicsCtx.fill();
+                    physicsCtx.shadowBlur = 0;
+
+                    animTime += timeStep;
+                    physicsAnimationId = requestAnimationFrame(animate);
+                }
+
+                animate();
+            }
+
+            physicsAngle.addEventListener('input', () => {
+                physicsValAngle.textContent = physicsAngle.value + "°";
+            });
+            physicsVelocity.addEventListener('input', () => {
+                physicsValVelocity.textContent = physicsVelocity.value + " m/s";
+            });
+
+            physicsLaunchBtn.addEventListener('click', launchProjectile);
+            physicsResetBtn.addEventListener('click', () => {
+                if (physicsAnimationId) {
+                    cancelAnimationFrame(physicsAnimationId);
+                }
+                trajectoryPoints = [];
+                drawPhysicsGrid();
+                physTelemetryRange.textContent = "0.00 m";
+                physTelemetryHeight.textContent = "0.00 m";
+                physTelemetryTime.textContent = "0.00 s";
+            });
+
+            // --------------------------------------------------------------------------
+            // 3. Biologi (DNA Codon Sandbox)
+            // --------------------------------------------------------------------------
+            const dnaInput = document.getElementById('dnaInput');
+            const bioMrnaStrand = document.getElementById('bioMrnaStrand');
+            const bioAminoChain = document.getElementById('bioAminoChain');
+            const dnaTranslateBtn = document.getElementById('dnaTranslateBtn');
+
+            // Codon lookup table
+            const codonTable = {
+                'AUG': 'Met (Start)',
+                'UUU': 'Phe', 'UUC': 'Phe',
+                'UUA': 'Leu', 'UUG': 'Leu', 'CUU': 'Leu', 'CUC': 'Leu', 'CUA': 'Leu', 'CUG': 'Leu',
+                'AUU': 'Ile', 'AUC': 'Ile', 'AUA': 'Ile',
+                'GUU': 'Val', 'GUC': 'Val', 'GUA': 'Val', 'GUG': 'Val',
+                'UCU': 'Ser', 'UCC': 'Ser', 'UCA': 'Ser', 'UCG': 'Ser', 'AGU': 'Ser', 'AGC': 'Ser',
+                'CCU': 'Pro', 'CCC': 'Pro', 'CCA': 'Pro', 'CCG': 'Pro',
+                'ACU': 'Thr', 'ACC': 'Thr', 'ACA': 'Thr', 'ACG': 'Thr',
+                'GCU': 'Ala', 'GCC': 'Ala', 'GCA': 'Ala', 'GCG': 'Ala',
+                'UAU': 'Tyr', 'UAC': 'Tyr',
+                'CAU': 'His', 'CAC': 'His',
+                'CAA': 'Gln', 'CAG': 'Gln',
+                'AAU': 'Asn', 'AAC': 'Asn',
+                'AAA': 'Lys', 'AAG': 'Lys',
+                'GAU': 'Asp', 'GAC': 'Asp',
+                'GAA': 'Glu', 'GAG': 'Glu',
+                'UGU': 'Cys', 'UGC': 'Cys',
+                'UGG': 'Trp',
+                'CGU': 'Arg', 'CGC': 'Arg', 'CGA': 'Arg', 'CGG': 'Arg', 'AGA': 'Arg', 'AGG': 'Arg',
+                'GGU': 'Gly', 'GGC': 'Gly', 'GGA': 'Gly', 'GGG': 'Gly',
+                'UAA': 'Stop', 'UAG': 'Stop', 'UGA': 'Stop'
+            };
+
+            function translateDnaSequence() {
+                const dnaRaw = dnaInput.value.toUpperCase().replace(/[^ATGC]/g, '');
+                dnaInput.value = dnaRaw; // sanitize input field
+
+                if (dnaRaw.length === 0) {
+                    alert("Masukkan urutan basa DNA terlebih dahulu!");
+                    return;
+                }
+
+                // DNA -> mRNA complementary (A->U, T->A, G->C, C->G)
+                let mrnaStrand = "";
+                bioMrnaStrand.innerHTML = "";
+
+                for (let i = 0; i < dnaRaw.length; i++) {
+                    const dnaBase = dnaRaw[i];
+                    let rnaBase = "";
+                    if (dnaBase === 'A') rnaBase = 'U';
+                    else if (dnaBase === 'T') rnaBase = 'A';
+                    else if (dnaBase === 'G') rnaBase = 'C';
+                    else if (dnaBase === 'C') rnaBase = 'G';
+
+                    mrnaStrand += rnaBase;
+
+                    const block = document.createElement('span');
+                    block.className = `bio-nucleotide nucl-${rnaBase.toLowerCase()}`;
+                    block.textContent = rnaBase;
+                    bioMrnaStrand.appendChild(block);
+                }
+
+                // mRNA -> Amino Acids (Codons of 3 bases)
+                bioAminoChain.innerHTML = "";
+                
+                for (let j = 0; j < mrnaStrand.length - 2; j += 3) {
+                    const triplet = mrnaStrand.substring(j, j + 3);
+                    const aminoName = codonTable[triplet] || "Unk";
+
+                    const aminoBlock = document.createElement('div');
+                    aminoBlock.className = "codon-amino-block";
+                    
+                    if (aminoName === 'Stop') {
+                        aminoBlock.style.background = 'linear-gradient(135deg, #ef4444, #be123c)';
+                        aminoBlock.style.boxShadow = '0 4px 10px rgba(239, 68, 68, 0.25)';
+                    } else if (aminoName.includes('Start')) {
+                        aminoBlock.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
+                        aminoBlock.style.boxShadow = '0 4px 10px rgba(59, 130, 246, 0.25)';
+                    }
+
+                    aminoBlock.innerHTML = `
+                        <span class="codon-triplet">${triplet}</span>
+                        <span>${aminoName}</span>
+                    `;
+                    bioAminoChain.appendChild(aminoBlock);
+                }
+            }
+
+            dnaTranslateBtn.addEventListener('click', translateDnaSequence);
+
+            // Templates listener
+            document.querySelectorAll('.btn-template').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const dnaVal = btn.getAttribute('data-dna');
+                    dnaInput.value = dnaVal;
+                    translateDnaSequence();
+                });
+            });
+
+            // Initial load
+            setTimeout(translateDnaSequence, 100);
+
+            // --------------------------------------------------------------------------
+            // 4. Bahasa Inggris (Sentence & Tenses Conjugator)
+            // --------------------------------------------------------------------------
+            const englishVerb = document.getElementById('englishVerb');
+            const englishTense = document.getElementById('englishTense');
+            const engPositiveSentence = document.getElementById('engPositiveSentence');
+            const engNegativeText = document.getElementById('engNegativeText');
+            const engQuestionText = document.getElementById('engQuestionText');
+            const engFormulaPattern = document.getElementById('engFormulaPattern');
+
+            // Simplistic irregular list for Past & Continuous base rules
+            const verbDb = {
+                'study': { past: 'studied', ing: 'studying', s: 'studies' },
+                'learn': { past: 'learned', ing: 'learning', s: 'learns' },
+                'write': { past: 'wrote', ing: 'writing', s: 'writes' },
+                'go': { past: 'went', ing: 'going', s: 'goes' },
+                'code': { past: 'coded', ing: 'coding', s: 'codes' },
+                'run': { past: 'ran', ing: 'running', s: 'runs' }
+            };
+
+            function conjugateEnglishTense() {
+                const rawVerb = englishVerb.value.toLowerCase().trim();
+                if (rawVerb.length === 0) return;
+
+                // Fallback basic suffix if verb not in dictionary
+                let verbS = rawVerb + "s";
+                let verbPast = rawVerb + "ed";
+                let verbIng = rawVerb + "ing";
+
+                if (rawVerb.endsWith('y')) {
+                    verbS = rawVerb.slice(0, -1) + 'ies';
+                    verbPast = rawVerb.slice(0, -1) + 'ied';
+                } else if (rawVerb.endsWith('e')) {
+                    verbIng = rawVerb.slice(0, -1) + 'ing';
+                }
+
+                const verbInfo = verbDb[rawVerb] || { past: verbPast, ing: verbIng, s: verbS };
+
+                const tense = englishTense.value;
+
+                let positiveHTML = "";
+                let negativeStr = "";
+                let questionStr = "";
+
+                if (tense === 'present') {
+                    // Subject: I, Verb: study
+                    positiveHTML = `
+                        <div class="gram-token"><span class="gram-word">I</span><span class="gram-tag tag-sub">Subj (I)</span></div>
+                        <div class="gram-token"><span class="gram-word">${rawVerb}</span><span class="gram-tag tag-verb">Verb 1</span></div>
+                        <div class="gram-token"><span class="gram-word">English</span><span class="gram-tag tag-obj">Object</span></div>
+                        <div class="gram-token"><span class="gram-word">every day</span><span class="gram-tag tag-aux" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Adverb</span></div>
+                    `;
+                    negativeStr = `I do not ${rawVerb} English every day.`;
+                    questionStr = `Do I ${rawVerb} English every day?`;
+                    engFormulaPattern.innerHTML = `Pola: <code>Subject + Verb 1 + Object + Adverb</code>`;
+
+                } else if (tense === 'continuous') {
+                    positiveHTML = `
+                        <div class="gram-token"><span class="gram-word">I</span><span class="gram-tag tag-sub">Subj (I)</span></div>
+                        <div class="gram-token"><span class="gram-word">am</span><span class="gram-tag tag-aux">Aux (am)</span></div>
+                        <div class="gram-token"><span class="gram-word">${verbInfo.ing}</span><span class="gram-tag tag-verb">Verb -ing</span></div>
+                        <div class="gram-token"><span class="gram-word">English</span><span class="gram-tag tag-obj">Object</span></div>
+                        <div class="gram-token"><span class="gram-word">now</span><span class="gram-tag tag-aux" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Adverb</span></div>
+                    `;
+                    negativeStr = `I am not ${verbInfo.ing} English now.`;
+                    questionStr = `Am I ${verbInfo.ing} English now?`;
+                    engFormulaPattern.innerHTML = `Pola: <code>Subject + am/is/are + Verb-ing + Object + Adverb</code>`;
+
+                } else if (tense === 'past') {
+                    positiveHTML = `
+                        <div class="gram-token"><span class="gram-word">I</span><span class="gram-tag tag-sub">Subj (I)</span></div>
+                        <div class="gram-token"><span class="gram-word">${verbInfo.past}</span><span class="gram-tag tag-verb">Verb 2 (Past)</span></div>
+                        <div class="gram-token"><span class="gram-word">English</span><span class="gram-tag tag-obj">Object</span></div>
+                        <div class="gram-token"><span class="gram-word">yesterday</span><span class="gram-tag tag-aux" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Adverb</span></div>
+                    `;
+                    negativeStr = `I did not ${rawVerb} English yesterday.`;
+                    questionStr = `Did I ${rawVerb} English yesterday?`;
+                    engFormulaPattern.innerHTML = `Pola: <code>Subject + Verb 2 + Object + Adverb</code>`;
+
+                } else if (tense === 'future') {
+                    positiveHTML = `
+                        <div class="gram-token"><span class="gram-word">I</span><span class="gram-tag tag-sub">Subj (I)</span></div>
+                        <div class="gram-token"><span class="gram-word">will</span><span class="gram-tag tag-aux">Aux (will)</span></div>
+                        <div class="gram-token"><span class="gram-word">${rawVerb}</span><span class="gram-tag tag-verb">Verb 1</span></div>
+                        <div class="gram-token"><span class="gram-word">English</span><span class="gram-tag tag-obj">Object</span></div>
+                        <div class="gram-token"><span class="gram-word">tomorrow</span><span class="gram-tag tag-aux" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Adverb</span></div>
+                    `;
+                    negativeStr = `I will not ${rawVerb} English tomorrow.`;
+                    questionStr = `Will I ${rawVerb} English tomorrow?`;
+                    engFormulaPattern.innerHTML = `Pola: <code>Subject + will + Verb 1 + Object + Adverb</code>`;
+                }
+
+                engPositiveSentence.innerHTML = positiveHTML;
+                engNegativeText.textContent = negativeStr;
+                engQuestionText.textContent = questionStr;
+            }
+
+            englishVerb.addEventListener('input', conjugateEnglishTense);
+            englishTense.addEventListener('change', conjugateEnglishTense);
+
+            // Initial load
+            setTimeout(conjugateEnglishTense, 100);
+
+            // --------------------------------------------------------------------------
+            // 5. Robotik (Grid Robot Commander)
+            // --------------------------------------------------------------------------
+            const roboticsArena = document.getElementById('roboticsArena');
+            const robotCmdTray = document.getElementById('robotCmdTray');
+            const robotExecuteBtn = document.getElementById('robotExecuteBtn');
+            const robotClearBtn = document.getElementById('robotClearBtn');
+
+            let robotX = 0; // 0 to 4
+            let robotY = 4; // 0 to 4 (Start bottom-left)
+            let robotHeading = 0; // 0=North, 90=East, 180=South, 270=West
+            let commandQueue = [];
+            let isRobotRunning = false;
+
+            // Define grid maps
+            // 1 = obstacle, 2 = goal portal
+            const arenaGridMap = [
+                [0, 0, 0, 0, 2],
+                [0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 0, 0, 0]
+            ];
+
+            function initRoboticsArena() {
+                roboticsArena.innerHTML = "";
+                for (let r = 0; r < 5; r++) {
+                    for (let c = 0; c < 5; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = "robot-cell";
+                        cell.setAttribute('data-row', r);
+                        cell.setAttribute('data-col', c);
+
+                        const mapVal = arenaGridMap[r][c];
+                        if (mapVal === 1) {
+                            cell.className += " obstacle";
+                            cell.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+                        } else if (mapVal === 2) {
+                            cell.className += " portal";
+                            cell.innerHTML = '<i class="fa-solid fa-door-open"></i>';
+                        }
+
+                        // Place robot entity
+                        if (r === robotY && c === robotX) {
+                            const robot = document.createElement('i');
+                            robot.className = "fa-solid fa-robot robot-entity";
+                            robot.style.transform = `rotate(${robotHeading}deg)`;
+                            cell.appendChild(robot);
+                        }
+
+                        roboticsArena.appendChild(cell);
+                    }
+                }
+            }
+
+            function updateRobotPosition() {
+                initRoboticsArena();
+            }
+
+            function addCommandToTray(cmd) {
+                if (isRobotRunning) return;
+
+                if (commandQueue.length === 0) {
+                    robotCmdTray.innerHTML = "";
+                }
+
+                commandQueue.push(cmd);
+
+                const token = document.createElement('div');
+                token.className = "cmd-token";
+                token.innerHTML = `
+                    <span>${cmd}</span>
+                    <i class="fa-solid fa-circle-xmark remove-cmd"></i>
+                `;
+
+                // Handle token removal
+                token.querySelector('.remove-cmd').addEventListener('click', () => {
+                    const idx = Array.from(robotCmdTray.children).indexOf(token);
+                    commandQueue.splice(idx, 1);
+                    token.remove();
+
+                    if (commandQueue.length === 0) {
+                        robotCmdTray.innerHTML = '<span class="gray" style="font-size: 0.8rem; color: var(--slate-500); width: 100%; text-align: center; line-height: 2.5;">Baki kosong. Klik tombol di bawah untuk menambah langkah.</span>';
+                    }
+                });
+
+                robotCmdTray.appendChild(token);
+            }
+
+            document.querySelectorAll('.btn-robot-cmd').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cmd = btn.getAttribute('data-cmd');
+                    addCommandToTray(cmd);
+                });
+            });
+
+            robotClearBtn.addEventListener('click', () => {
+                if (isRobotRunning) return;
+                commandQueue = [];
+                robotCmdTray.innerHTML = '<span class="gray" style="font-size: 0.8rem; color: var(--slate-500); width: 100%; text-align: center; line-height: 2.5;">Baki kosong. Klik tombol di bawah untuk menambah langkah.</span>';
+                robotX = 0;
+                robotY = 4;
+                robotHeading = 0;
+                updateRobotPosition();
+            });
+
+            robotExecuteBtn.addEventListener('click', () => {
+                if (isRobotRunning || commandQueue.length === 0) return;
+
+                isRobotRunning = true;
+                robotExecuteBtn.disabled = true;
+                robotExecuteBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menjalankan Simulasi...';
+
+                // Reset position to home before running
+                robotX = 0;
+                robotY = 4;
+                robotHeading = 0;
+                updateRobotPosition();
+
+                let step = 0;
+                const interval = setInterval(() => {
+                    if (step >= commandQueue.length) {
+                        clearInterval(interval);
+                        isRobotRunning = false;
+                        robotExecuteBtn.disabled = false;
+                        robotExecuteBtn.innerHTML = '<i class="fa-solid fa-play"></i> Jalankan Instruksi Robot!';
+                        
+                        // Check if won
+                        if (arenaGridMap[robotY][robotX] === 2) {
+                            alert("Luar Biasa! 🎉 Robot Anda berhasil mencapai gerbang finish portal dengan sukses!");
+                        } else {
+                            alert("Simulasi Berakhir. Coba susun rute lain untuk mencapai bendera finish.");
+                        }
+                        return;
+                    }
+
+                    const cmd = commandQueue[step];
+
+                    if (cmd === 'FORWARD') {
+                        // Move based on heading direction
+                        if (robotHeading === 0 && robotY > 0) robotY--;
+                        else if (robotHeading === 90 && robotX < 4) robotX++;
+                        else if (robotHeading === 180 && robotY < 4) robotY++;
+                        else if (robotHeading === 270 && robotX > 0) robotX--;
+                    } else if (cmd === 'BACKWARD') {
+                        if (robotHeading === 0 && robotY < 4) robotY++;
+                        else if (robotHeading === 90 && robotX > 0) robotX--;
+                        else if (robotHeading === 180 && robotY > 0) robotY--;
+                        else if (robotHeading === 270 && robotX < 4) robotX++;
+                    } else if (cmd === 'LEFT') {
+                        robotHeading = (robotHeading - 90 + 360) % 360;
+                    } else if (cmd === 'RIGHT') {
+                        robotHeading = (robotHeading + 90) % 360;
+                    }
+
+                    // Check obstacle collision
+                    if (arenaGridMap[robotY][robotX] === 1) {
+                        clearInterval(interval);
+                        isRobotRunning = false;
+                        robotExecuteBtn.disabled = false;
+                        robotExecuteBtn.innerHTML = '<i class="fa-solid fa-play"></i> Jalankan Instruksi Robot!';
+                        alert("Robot Crash! 💥 Anda menabrak kotak rintangan. Silakan atur kembali urutan pergerakan.");
+                        return;
+                    }
+
+                    updateRobotPosition();
+                    step++;
+                }, 800);
+            });
+
+            // Initial load
+            setTimeout(initRoboticsArena, 100);
+
+            // --------------------------------------------------------------------------
+            // 6. IoT (ESP32 Breadboard & Smart Cloud Dashboard)
+            // --------------------------------------------------------------------------
+            const ledRed = document.getElementById('ledRed');
+            const ledGreen = document.getElementById('ledGreen');
+            const switchD2 = document.getElementById('switchD2');
+            const switchD4 = document.getElementById('switchD4');
+            const iotSliderTemp = document.getElementById('iotSliderTemp');
+            const iotSliderHumid = document.getElementById('iotSliderHumid');
+
+            const iotDashboardTemp = document.getElementById('iotDashboardTemp');
+            const iotDashboardHumid = document.getElementById('iotDashboardHumid');
+            const iotSliderTempVal = document.getElementById('iotSliderTempVal');
+            const iotSliderHumidVal = document.getElementById('iotSliderHumidVal');
+
+            const iotCanvas = document.getElementById('iotChart');
+            const iotCtx = iotCanvas.getContext('2d');
+
+            let tempHistory = [28, 28.5, 29, 28, 27.5, 28];
+
+            function initIotDashboard() {
+                // Resize chart canvas
+                iotCanvas.width = iotCanvas.parentElement.clientWidth || 320;
+                iotCanvas.height = 120;
+                drawIotChart();
+            }
+
+            function drawIotChart() {
+                const w = iotCanvas.width;
+                const h = iotCanvas.height;
+
+                iotCtx.clearRect(0, 0, w, h);
+
+                // Grid background lines
+                iotCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                iotCtx.lineWidth = 1;
+                for (let y = 10; y < h; y += 30) {
+                    iotCtx.beginPath();
+                    iotCtx.moveTo(0, y);
+                    iotCtx.lineTo(w, y);
+                    iotCtx.stroke();
+                }
+
+                // Plot temperature points
+                iotCtx.beginPath();
+                const margin = 20;
+                const step = (w - margin * 2) / (tempHistory.length - 1);
+
+                tempHistory.forEach((temp, i) => {
+                    // Scaling range: 15C to 45C -> maps to height
+                    const y = h - 20 - ((temp - 15) / 30) * (h - 40);
+                    const x = margin + i * step;
+
+                    if (i === 0) iotCtx.moveTo(x, y);
+                    else iotCtx.lineTo(x, y);
+                });
+
+                iotCtx.lineWidth = 3;
+                iotCtx.strokeStyle = '#0ea5e9'; // Glowing Cyan Line
+                iotCtx.shadowBlur = 8;
+                iotCtx.shadowColor = '#0ea5e9';
+                iotCtx.stroke();
+                iotCtx.shadowBlur = 0; // reset
+
+                // Draw end point indicator dot
+                const lastIdx = tempHistory.length - 1;
+                const lastTemp = tempHistory[lastIdx];
+                const endX = margin + lastIdx * step;
+                const endY = h - 20 - ((lastTemp - 15) / 30) * (h - 40);
+
+                iotCtx.beginPath();
+                iotCtx.arc(endX, endY, 6, 0, 2 * Math.PI);
+                iotCtx.fillStyle = '#ffffff';
+                iotCtx.fill();
+            }
+
+            function toggleLedPin(ledEl, switchEl) {
+                switchEl.classList.toggle('active');
+                if (switchEl.classList.contains('active')) {
+                    ledEl.classList.add('active');
+                } else {
+                    ledEl.classList.remove('active');
+                }
+            }
+
+            switchD2.addEventListener('click', () => toggleLedPin(ledRed, switchD2));
+            switchD4.addEventListener('click', () => toggleLedPin(ledGreen, switchD4));
+
+            function updateSensors() {
+                const temp = parseFloat(iotSliderTemp.value);
+                const humid = parseInt(iotSliderHumid.value);
+
+                iotDashboardTemp.textContent = temp.toFixed(1) + "°C";
+                iotDashboardHumid.textContent = humid + "% RH";
+                
+                iotSliderTempVal.textContent = temp.toFixed(0) + "°C";
+                iotSliderHumidVal.textContent = humid + "%";
+
+                // Add to history roll
+                tempHistory.push(temp);
+                if (tempHistory.length > 8) {
+                    tempHistory.shift();
+                }
+
+                drawIotChart();
+            }
+
+            iotSliderTemp.addEventListener('input', updateSensors);
+            iotSliderHumid.addEventListener('input', updateSensors);
+
+            // Initial load
+            setTimeout(initIotDashboard, 100);
+
+            // Redraw canvases when screen changes sizes
+            window.addEventListener('resize', () => {
+                if (document.querySelector('.playground-tab[data-tab="math"]').classList.contains('active')) drawMathTriangle();
+                if (document.querySelector('.playground-tab[data-tab="physics"]').classList.contains('active')) drawPhysicsGrid();
+                if (document.querySelector('.playground-tab[data-tab="iot"]').classList.contains('active')) initIotDashboard();
+            });
 
             // Initial check for admin session
             updateAdminVisibility();
