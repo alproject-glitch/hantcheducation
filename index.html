@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimbingan Belajar HanTech Education - Solusi Belajar Terbaik SMP & SQL Playground</title>
+    <meta name="description"
+        content="Portal interaktif Bimbingan Belajar AN-NUR SMP. Menampilkan program bimbingan unggulan, simulator logika Python, dan playground SQL interaktif untuk siswa belajar basis data secara langsung.">
+    <meta name="keywords"
+        content="Bimbel HanTech Education, Bimbingan Belajar, SQL Playground, Belajar SQL Interaktif, Python Simulator, Materi SMP">
+    <meta name="author" content="Developer Portfolio">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styke.css">
+    <!-- AlaSQL for in-memory database simulation -->
+    <script src="https://cdn.jsdelivr.net/npm/alasql@4.4.0/dist/alasql.min.js"></script>
+</head>
+
+<body>
+    <!-- Background Glow Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container navbar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>HanTech <span class="logo-sub">Education</span></span>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#program"><i class="fa-solid fa-book-open"></i> Program</a></li>
+                    <li><a href="#minilab"><i class="fa-solid fa-flask"></i> Mini-Lab</a></li>
+                    <li><a href="#sqllab"><i class="fa-solid fa-database"></i> SQL Lab</a></li>
+                    <li><a href="#kontak"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+                </ul>
+                <a href="#kontak" class="btn btn-primary btn-nav">Daftar Sekarang</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fa-solid fa-star"></i> Program Bimbel SMP Unggulan</span>
+                <h1>Raih Prestasi Terunggul Bersama <span class="text-gradient">Bimbel HanTech Education</span></h1>
+                <p>Pendampingan belajar intensif dan interaktif khusus siswa SMP. Membantu memahami konsep secara
+                    mendalam dengan metode praktis dan menyenangkan.</p>
+                <div class="hero-actions">
+                    <a href="#program" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Jelajahi Program</a>
+                    <a href="#minilab" class="btn btn-secondary"><i class="fa-solid fa-play"></i> Coba Mini-Lab</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Siswa Puas</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Tutor Ahli</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>A+</h3>
+                        <p>Peningkatan Nilai</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="premium-card-wrapper">
+                    <div class="premium-card">
+                        <div class="card-glow"></div>
+                        <div class="card-inner">
+                            <div class="card-tag">Bimbel Premium</div>
+                            <div class="user-profile">
+                                <div class="avatar-group">
+                                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                                </div>
+                                <div class="user-info">
+                                    <h4>Tutor Berpengalaman</h4>
+                                    <p>Alumni Universitas Terkemuka</p>
+                                </div>
+                            </div>
+                            <div class="features-list">
+                                <div class="feature-bullet">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>Pembahasan Soal HOTS Terstruktur</span>
+                                </div>
+                                <div class="feature-bullet">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>Kelas Interaktif & Nyaman</span>
+                                </div>
+                                <div class="feature-bullet">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>Konsultasi PR 24/7 via WhatsApp</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-info">
+                                <span><i class="fa-solid fa-heart text-danger"></i> Fokus pada Prestasi Karakter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="program-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">Program Kami</span>
+                <h2>Materi Pembelajaran Unggulan</h2>
+                <p>Kurikulum terbaru yang disesuaikan untuk memaksimalkan potensi akademik siswa.</p>
+            </div>
+            <div class="program-grid">
+                <!-- Card 1 -->
+                <div class="program-card">
+                    <div class="program-icon icon-math">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>Matematika</h3>
+                    <p>Menguasai aljabar, geometri, dan statistika dengan trik cepat dan konsep yang logis tanpa
+                        menghafal rumus buta.</p>
+                    <ul class="program-features">
+                        <li><i class="fa-solid fa-chevron-right"></i> Persamaan Linear</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Teorema Pythagoras</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Statistika Dasar</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="program-card">
+                    <div class="program-icon icon-science">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <h3>Fisika & Biologi (IPA)</h3>
+                    <p>Menjelajahi fenomena alam dan hukum sains melalui eksperimen visual serta penjelasan konsep yang
+                        aplikatif.</p>
+                    <ul class="program-features">
+                        <li><i class="fa-solid fa-chevron-right"></i> Gaya & Gerak</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Sistem Organ Manusia</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Klasifikasi Makhluk Hidup</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="program-card">
+                    <div class="program-icon icon-english">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3>Bahasa Inggris</h3>
+                    <p>Meningkatkan rasa percaya diri dalam berbicara, menulis, serta memahami struktur tata bahasa
+                        Inggris secara natural.</p>
+                    <ul class="program-features">
+                        <li><i class="fa-solid fa-chevron-right"></i> Tenses Mastery</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Speaking Club</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Reading Comprehension</li>
+                    </ul>
+                </div>
+                <!-- Card 4 -->
+                <div class="program-card">
+                    <div class="program-icon icon-coding">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>Algoritma & Coding</h3>
+                    <p>Belajar berpikir komputasional dengan dasar pemrograman Python untuk merancang logika matematika
+                        yang kuat.</p>
+                    <ul class="program-features">
+                        <li><i class="fa-solid fa-chevron-right"></i> Logika Percabangan</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Struktur Data List</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Pemecahan Masalah (Problem Solving)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini-Lab Section -->
+    <section id="minilab" class="minilab-section">
+        <div class="container">
+            <div class="minilab-wrapper">
+                <div class="minilab-info">
+                    <span class="lab-badge"><i class="fa-solid fa-flask"></i> Mini-Lab Interaktif</span>
+                    <h2>Eksperimen Logika: Detektor Angka Unik</h2>
+                    <p>Di Bimbel HanTech Education, kami menggabungkan Matematika dan Teknologi. Di bawah ini adalah
+                        simulator
+                        berbasis algoritma Python <code>latihan.py</code> Anda. Masukkan kumpulan angka, dan sistem akan
+                        mencari angka yang <strong>hanya muncul satu kali</strong> lalu mengurutkannya secara otomatis!
+                    </p>
+
+                    <div class="lab-features">
+                        <div class="lab-feat">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Real-time Processing</span>
+                        </div>
+                        <div class="lab-feat">
+                            <i class="fa-solid fa-code-compare"></i>
+                            <span>Algoritma Pengurutan (Sorting)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="minilab-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="terminal-title">latihan.py - Simulator</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="input-group">
+                            <label for="numberInput"><i class="fa-solid fa-list-numeric"></i> Masukkan Angka (pisahkan
+                                dengan koma):</label>
+                            <input type="text" id="numberInput" placeholder="Contoh: 1, 2, 3, 4, 5, 2, 3, 6"
+                                value="1, 2, 3, 4, 5, 2, 3, 6">
+                        </div>
+
+                        <button id="runAlgorithm" class="btn btn-gradient btn-full"><i class="fa-solid fa-play"></i>
+                            Jalankan Algoritma</button>
+
+                        <div class="output-container">
+                            <span class="output-label">Hasil Output Terminal:</span>
+                            <div class="terminal-output" id="terminalOutput">
+                                <span class="gray"># Menunggu eksekusi...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SQL-Lab Section -->
+    <section id="sqllab" class="sqllab-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title"><i class="fa-solid fa-database"></i> SQL Lab Interaktif</span>
+                <h2>Kuasai Basis Data dengan <span class="text-gradient">SQL Playground</span></h2>
+                <p>SQL adalah bahasa standar untuk mengelola database. Pelajari konsep dasarnya dan langsung jalankan
+                    query secara interaktif di browser Anda!</p>
+            </div>
+
+            <div class="sqllab-grid">
+                <!-- Left Column: Lessons & Database Schema -->
+                <div class="sqllab-sidebar">
+                    <!-- Lessons List -->
+                    <div class="sqllab-card lessons-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-graduation-cap"></i> Modul Belajar SQL</h3>
+                            <span class="progress-badge" id="sqlProgress">0/5 Selesai</span>
+                        </div>
+                        <div class="lessons-nav">
+                            <button class="lesson-tab active" data-level="1">
+                                <span class="tab-num">1</span>
+                                <span class="tab-title">SELECT</span>
+                                <span class="tab-status"><i class="fa-regular fa-circle"></i></span>
+                            </button>
+                            <button class="lesson-tab" data-level="2">
+                                <span class="tab-num">2</span>
+                                <span class="tab-title">WHERE</span>
+                                <span class="tab-status"><i class="fa-regular fa-circle"></i></span>
+                            </button>
+                            <button class="lesson-tab" data-level="3">
+                                <span class="tab-num">3</span>
+                                <span class="tab-title">ORDER BY</span>
+                                <span class="tab-status"><i class="fa-regular fa-circle"></i></span>
+                            </button>
+                            <button class="lesson-tab" data-level="4">
+                                <span class="tab-num">4</span>
+                                <span class="tab-title">JOIN</span>
+                                <span class="tab-status"><i class="fa-regular fa-circle"></i></span>
+                            </button>
+                            <button class="lesson-tab" data-level="5">
+                                <span class="tab-num">5</span>
+                                <span class="tab-title">INSERT</span>
+                                <span class="tab-status"><i class="fa-regular fa-circle"></i></span>
+                            </button>
+                        </div>
+
+                        <!-- Lesson Content -->
+                        <div class="lesson-detail" id="lessonDetail">
+                            <h4 id="lessonTitle">Mengenal Data (SELECT)</h4>
+                            <p id="lessonExplanation">SQL <code>SELECT</code> digunakan untuk mengambil data dari
+                                database. Tanda bintang (<code>*</code>) digunakan untuk menampilkan seluruh kolom yang
+                                ada dalam tabel.</p>
+
+                            <div class="task-box">
+                                <h5><i class="fa-solid fa-clipboard-question"></i> Tugas Tantangan:</h5>
+                                <p id="lessonTask">Tampilkan seluruh data dari tabel <code>siswa</code>.</p>
+                            </div>
+
+                            <div class="hint-box">
+                                <button class="btn-hint" id="toggleHint"><i class="fa-solid fa-lightbulb"></i> Petunjuk
+                                    Jawaban</button>
+                                <p class="hint-text d-none" id="hintText">Ketik: <code>SELECT * FROM siswa</code></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schema Browser -->
+                    <div class="sqllab-card schema-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-sitemap"></i> Struktur Database (Schema)</h3>
+                            <button class="btn-reset-db" id="resetDbBtn" title="Reset Database ke Pengaturan Awal"><i
+                                    class="fa-solid fa-arrow-rotate-right"></i> Reset DB</button>
+                        </div>
+                        <div class="schema-body">
+                            <p class="schema-info">Klik tabel untuk melihat detail kolom & data live:</p>
+                            <div class="schema-tables">
+                                <!-- Will be dynamically generated in Javascript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Code Editor & Result Terminal -->
+                <div class="sqllab-workspace">
+                    <div class="sqllab-card editor-card">
+                        <div class="card-header editor-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">sql_playground.sql</div>
+                            <div class="db-status-badge"><span class="pulse-dot"></span> In-Memory DB Active</div>
+                        </div>
+                        <div class="editor-body">
+                            <!-- Helper buttons -->
+                            <div class="editor-helpers">
+                                <button class="helper-btn" data-insert="SELECT * FROM ">SELECT *</button>
+                                <button class="helper-btn" data-insert="WHERE ">WHERE</button>
+                                <button class="helper-btn" data-insert="ORDER BY ">ORDER BY</button>
+                                <button class="helper-btn"
+                                    data-insert="INNER JOIN nilai ON siswa.id = nilai.siswa_id ">JOIN</button>
+                                <button class="helper-btn" data-insert="siswa">siswa</button>
+                                <button class="helper-btn" data-insert="nilai">nilai</button>
+                            </div>
+
+                            <div class="code-container">
+                                <div class="line-numbers">
+                                    <span>1</span><span>2</span><span>3</span><span>4</span>
+                                </div>
+                                <textarea id="sqlInput" placeholder="Ketik SQL query Anda di sini..."
+                                    spellcheck="false">SELECT * FROM siswa</textarea>
+                            </div>
+
+                            <div class="editor-actions">
+                                <button id="resetSql" class="btn btn-secondary"><i class="fa-solid fa-rotate-left"></i>
+                                    Reset</button>
+                                <div class="action-group">
+                                    <button id="runSql" class="btn btn-primary"><i class="fa-solid fa-play"></i>
+                                        Jalankan Query</button>
+                                    <button id="validateSql" class="btn btn-gradient"><i class="fa-solid fa-award"></i>
+                                        Uji Jawaban</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Table/Terminal -->
+                    <div class="sqllab-card output-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-list"></i> Hasil Query & Output</h3>
+                            <span class="row-count" id="rowCount">0 Baris Dikembalikan</span>
+                        </div>
+                        <div class="output-body">
+                            <div class="query-status-bar" id="queryStatus">
+                                <span class="status-success"><i class="fa-solid fa-circle-check"></i> Database siap
+                                    digunakan. Silakan jalankan query.</span>
+                            </div>
+                            <div class="table-scroll-container">
+                                <div id="sqlOutputTable" class="sql-output-placeholder">
+                                    <i class="fa-solid fa-terminal"></i>
+                                    <p>Tulis kueri SQL di atas dan klik <strong>Jalankan Query</strong> untuk melihat
+                                        hasilnya di sini.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebration Modal -->
+    <div class="sql-modal-overlay d-none" id="celebrationModal">
+        <div class="sql-modal-card">
+            <div class="modal-glow"></div>
+            <div class="modal-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2>Selamat! Jawaban Benar</h2>
+            <p id="modalMessage">Anda berhasil menyelesaikan Level 1. Siap untuk tingkat berikutnya?</p>
+            <button class="btn btn-gradient btn-full" id="nextLevelBtn">Lanjut ke Level Berikutnya <i
+                    class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="sql-modal-overlay d-none" id="adminLoginModal">
+        <div class="sql-modal-card">
+            <div class="modal-glow"></div>
+            <div class="modal-icon"
+                style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); box-shadow: 0 8px 24px rgba(13, 148, 136, 0.3);">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h2>Portal Admin HanTech Education</h2>
+            <p>Masukkan kode akses administrator untuk membuka Spreadsheet Rekap Pendaftaran.</p>
+
+            <div class="form-group" style="text-align: left; margin-bottom: 20px;">
+                <label for="adminPassword"
+                    style="color: var(--slate-700); font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; display: block;">Kode
+                    Akses Admin</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i class="fa-solid fa-key"
+                        style="position: absolute; left: 14px; color: var(--slate-500); font-size: 0.9rem; z-index: 2;"></i>
+                    <input type="password" id="adminPassword" placeholder="Masukkan kata sandi..."
+                        style="padding-left: 38px; width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--slate-200); padding: 12px 12px 12px 38px; font-family: var(--font-main); font-size: 0.95rem; color: var(--dark); transition: var(--transition);">
+                </div>
+                <span id="loginErrorMsg" class="d-none"
+                    style="color: #ef4444; font-size: 0.8rem; margin-top: 6px; display: block; font-weight: 600;"><i
+                        class="fa-solid fa-circle-exclamation"></i> Kata sandi salah! Coba lagi.</span>
+            </div>
+
+            <div class="action-group" style="display: flex; gap: 10px;">
+                <button class="btn btn-secondary" id="closeLoginBtn" style="flex: 1; padding: 10px 20px;">Batal</button>
+                <button class="btn btn-primary" id="submitLoginBtn"
+                    style="flex: 1; padding: 10px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));">Masuk
+                    <i class="fa-solid fa-right-to-bracket"></i></button>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--slate-500); margin-top: 15px;">
+                Petunjuk: Kata sandi bawaan adalah <code
+                    style="background: var(--slate-100); padding: 2px 6px; border-radius: 4px; color: var(--primary-dark); font-family: monospace;">admin123</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">Hubungi Kami</span>
+                <h2>Mulai Petualangan Belajarmu</h2>
+                <p>Konsultasikan kebutuhan belajar putra-putri Anda secara gratis dengan tim ahli kami.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="info-details">
+                            <h3>Lokasi Kami</h3>
+                            <p>Gedung HanTech Education, Jl. Raya Alumunium, Medan Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <div class="info-details">
+                            <h3>Telepon / WhatsApp</h3>
+                            <p>+62 82272073765</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        <div class="info-details">
+                            <h3>Email Resmi</h3>
+                            <p>aldisyaputra696@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" required placeholder="Masukkan nama lengkap Anda">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor WhatsApp</label>
+                                <input type="tel" id="phone" required placeholder="Contoh: 0812xxxxxxxx">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Kelas Siswa</label>
+                            <select id="class" required>
+                                <option value="" disabled selected>Pilih kelas...</option>
+                                <option value="7">Kelas 7 SMP</option>
+                                <option value="8">Kelas 8 SMP</option>
+                                <option value="9">Kelas 9 SMP</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan / Pertanyaan</label>
+                            <textarea id="message" rows="4"
+                                placeholder="Tuliskan pertanyaan atau kebutuhan belajar di sini..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Kirim Formulir Pendaftaran</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Spreadsheet Rekap Pendaftaran (Admin View) -->
+            <div class="spreadsheet-wrapper d-none" id="rekapPendaftaran">
+                <div class="spreadsheet-card">
+                    <div class="spreadsheet-header">
+                        <div class="header-left">
+                            <span class="sheet-badge"><i class="fa-solid fa-table"></i> Admin Spreadsheet</span>
+                            <h3>Rekapitulasi Data Pendaftaran Les</h3>
+                        </div>
+                        <div class="header-right">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="sheetSearch" placeholder="Cari pendaftar...">
+                            </div>
+                            <button id="exportCsvBtn" class="btn-sheet-action" title="Unduh Spreadsheet ke Excel/CSV">
+                                <i class="fa-solid fa-file-excel"></i> <span>Export CSV</span>
+                            </button>
+                            <button id="clearDataBtn" class="btn-sheet-action danger" title="Kosongkan Semua Data">
+                                <i class="fa-solid fa-trash-can"></i> <span>Reset Data</span>
+                            </button>
+                            <button id="logoutAdminBtn" class="btn-sheet-action danger"
+                                style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;"
+                                title="Keluar Mode Admin">
+                                <i class="fa-solid fa-right-from-bracket"></i> <span>Keluar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="spreadsheet-toolbar">
+                        <div class="toolbar-info">
+                            <span class="active-rows-count" id="activeRowsCount">0 baris data terdaftar</span>
+                        </div>
+                        <div class="toolbar-actions">
+                            <button id="addManualBtn" class="btn-toolbar-action">
+                                <i class="fa-solid fa-plus"></i> Tambah Baris Manual
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mini Form to Add Entry manually (Hidden by default) -->
+                    <div class="manual-entry-form d-none" id="manualEntryForm">
+                        <div class="manual-form-grid">
+                            <div class="form-group-mini">
+                                <input type="text" id="manualName" placeholder="Nama Lengkap" required>
+                            </div>
+                            <div class="form-group-mini">
+                                <input type="tel" id="manualPhone" placeholder="WhatsApp (0812...)" required>
+                            </div>
+                            <div class="form-group-mini">
+                                <select id="manualClass" required>
+                                    <option value="" disabled selected>Pilih kelas...</option>
+                                    <option value="7">Kelas 7 SMP</option>
+                                    <option value="8">Kelas 8 SMP</option>
+                                    <option value="9">Kelas 9 SMP</option>
+                                </select>
+                            </div>
+                            <div class="form-group-mini">
+                                <input type="text" id="manualMessage" placeholder="Pesan / Keterangan">
+                            </div>
+                            <div class="form-group-mini btn-row">
+                                <button type="button" id="saveManualBtn" class="btn-mini-save" title="Simpan data"><i
+                                        class="fa-solid fa-check"></i></button>
+                                <button type="button" id="cancelManualBtn" class="btn-mini-cancel" title="Batal"><i
+                                        class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spreadsheet-container">
+                        <table class="excel-table" id="excelTable">
+                            <thead>
+                                <tr>
+                                    <th class="row-num-col"></th>
+                                    <th>A</th>
+                                    <th>B</th>
+                                    <th>C</th>
+                                    <th>D</th>
+                                    <th>E</th>
+                                </tr>
+                                <tr class="excel-headers">
+                                    <th class="row-num-col"></th>
+                                    <th>NAMA LENGKAP</th>
+                                    <th>NOMOR WHATSAPP</th>
+                                    <th>KELAS SISWA</th>
+                                    <th>PESAN / PERTANYAAN</th>
+                                    <th>TANGGAL PENDAFTARAN</th>
+                                </tr>
+                            </thead>
+                            <tbody id="spreadsheetBody">
+                                <!-- Will be dynamically generated in Javascript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span>HanTech <span class="logo-sub">Education</span></span>
+                </div>
+                <p>Pendidikan berkualitas berlandaskan nilai-nilai karakter mulia dan keunggulan akademik untuk tingkat
+                    Sekolah Menengah Pertama (SMP).</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#program">Program Belajar</a></li>
+                    <li><a href="#minilab">Mini-Lab</a></li>
+                    <li><a href="#sqllab">SQL Lab</a></li>
+                    <li><a href="#kontak">Daftar Les</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Konsultasi PR</a></li>
+                    <li><a href="#">Try Out Berkala</a></li>
+                    <li><a href="#">Laporan Evaluasi</a></li>
+                    <li><a href="#">Bimbingan Karakter</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 Bimbingan Belajar HanTech Education. All Rights Reserved.</p>
+                <p>Designed with <i class="fa-solid fa-heart text-danger"></i> for AN-NUR Students | <a href="#"
+                        id="adminPortalLink"
+                        style="color: var(--slate-500); text-decoration: none; font-weight: 600; margin-left: 6px; transition: var(--transition);"><i
+                            class="fa-solid fa-key"></i> Portal Admin</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive script for Navbar & Mini-Lab algorithm -->
+    <script>
+        // Responsive Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Dynamic Active Link Navigation Highlight
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.nav-menu ul li a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').slice(1) === current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // JS Implementation of the unique numbers algorithm in latihan.py
+        document.getElementById('runAlgorithm').addEventListener('click', function () {
+            const inputVal = document.getElementById('numberInput').value;
+            const outputDiv = document.getElementById('terminalOutput');
+
+            outputDiv.innerHTML = '<span class="blue">Executing algorithm from latihan.py...</span><br>';
+
+            setTimeout(() => {
+                // Parse input to list of numbers
+                const parsed = inputVal.split(',')
+                    .map(num => num.trim())
+                    .filter(num => num !== '')
+                    .map(num => {
+                        const parsedNum = parseFloat(num);
+                        return isNaN(parsedNum) ? num : parsedNum;
+                    });
+
+                if (parsed.length === 0) {
+                    outputDiv.innerHTML += '<span class="red">Error: Input tidak boleh kosong!</span>';
+                    return;
+                }
+
+                // Counts dictionary
+                const counts = {};
+                parsed.forEach(item => {
+                    if (counts[item] !== undefined) {
+                        counts[item] += 1;
+                    } else {
+                        counts[item] = 1;
+                    }
+                });
+
+                // Unique list
+                const uniqueNumbers = [];
+                for (const item in counts) {
+                    if (counts[item] === 1) {
+                        // Keep as number if possible
+                        const itemNum = parseFloat(item);
+                        uniqueNumbers.push(isNaN(itemNum) ? item : itemNum);
+                    }
+                }
+
+                // Sort unique numbers
+                uniqueNumbers.sort((a, b) => {
+                    if (typeof a === 'number' && typeof b === 'number') return a - b;
+                    return String(a).localeCompare(String(b));
+                });
+
+                // Print dynamic steps
+                let stepHtml = '';
+                stepHtml += `<span class="gray">&gt;&gt;&gt; data_input = [${parsed.join(', ')}]</span><br>`;
+                stepHtml += `<span class="gray">&gt;&gt;&gt; # Menghitung kemunculan angka...</span><br>`;
+
+                let countsStr = '{';
+                for (const key in counts) {
+                    countsStr += `"${key}": ${counts[key]}, `;
+                }
+                if (countsStr.length > 1) countsStr = countsStr.slice(0, -2);
+                countsStr += '}';
+
+                stepHtml += `<span class="gray">&gt;&gt;&gt; counts = ${countsStr}</span><br>`;
+                stepHtml += `<span class="gray">&gt;&gt;&gt; # Menyaring angka unik (hanya muncul 1 kali)...</span><br>`;
+                stepHtml += `<span class="gray">&gt;&gt;&gt; # Mengurutkan angka unik secara ascending...</span><br>`;
+
+                if (uniqueNumbers.length > 0) {
+                    stepHtml += `<span class="green font-bold">&gt;&gt;&gt; Hasil: [${uniqueNumbers.join(', ')}]</span>`;
+                } else {
+                    stepHtml += `<span class="yellow font-bold">&gt;&gt;&gt; Hasil: [] (Tidak ada angka unik yang hanya muncul 1 kali)</span>`;
+                }
+
+                outputDiv.innerHTML = stepHtml;
+            }, 800);
+        });
+
+        // ==========================================================================
+        // SQL LAB PLAYGROUND & INTERACTIVE LESSONS SYSTEM
+        // ==========================================================================
+
+        let currentLevel = 1;
+        let completedLevels = { 1: false, 2: false, 3: false, 4: false, 5: false };
+
+        const lessonsData = {
+            1: {
+                title: "Mengenal Data (SELECT)",
+                explanation: "SQL <code>SELECT</code> digunakan untuk mengambil data dari database. Tanda bintang (<code>*</code>) digunakan untuk menampilkan seluruh kolom yang ada dalam tabel.",
+                task: "Tampilkan seluruh data dari tabel <code>siswa</code>.",
+                defaultQuery: "SELECT * FROM siswa",
+                hint: "Ketik: <code>SELECT * FROM siswa</code>",
+                validate: function (result, query) {
+                    const normQuery = query.toLowerCase().trim();
+                    if (!normQuery.includes('siswa')) return false;
+                    if (!Array.isArray(result) || result.length < 5) return false;
+                    const keys = Object.keys(result[0]);
+                    return keys.includes('id') && keys.includes('nama') && keys.includes('kelas') && keys.includes('alamat');
+                }
+            },
+            2: {
+                title: "Menyaring Data (WHERE)",
+                explanation: "Perintah <code>WHERE</code> digunakan untuk menyaring baris berdasarkan kondisi tertentu. Misalnya: <code>WHERE kelas = 8</code>.",
+                task: "Tampilkan kolom <code>nama</code> dan <code>kelas</code> dari tabel <code>siswa</code> untuk siswa yang berada di <strong>kelas 9</strong>.",
+                defaultQuery: "SELECT nama, kelas FROM siswa WHERE kelas = 9",
+                hint: "Ketik: <code>SELECT nama, kelas FROM siswa WHERE kelas = 9</code>",
+                validate: function (result, query) {
+                    const normQuery = query.toLowerCase().trim();
+                    if (!normQuery.includes('siswa') || !normQuery.includes('kelas') || !normQuery.includes('9')) return false;
+                    if (!Array.isArray(result) || result.length !== 2) return false;
+                    const isAllClass9 = result.every(row => parseInt(row.kelas) === 9);
+                    const hasNama = result.every(row => row.nama !== undefined);
+                    return isAllClass9 && hasNama;
+                }
+            },
+            3: {
+                title: "Mengurutkan Data (ORDER BY)",
+                explanation: "Perintah <code>ORDER BY</code> digunakan untuk mengurutkan hasil berdasarkan kolom tertentu secara membesar (<code>ASC</code>) atau mengecil (<code>DESC</code>).",
+                task: "Tampilkan seluruh data dari tabel <code>nilai</code> terurut dari nilai <code>matematika</code> tertinggi ke terendah.",
+                defaultQuery: "SELECT * FROM nilai ORDER BY matematika DESC",
+                hint: "Ketik: <code>SELECT * FROM nilai ORDER BY matematika DESC</code>",
+                validate: function (result, query) {
+                    const normQuery = query.toLowerCase().trim();
+                    if (!normQuery.includes('nilai') || !normQuery.includes('matematika') || !normQuery.includes('desc')) return false;
+                    if (!Array.isArray(result) || result.length !== 5) return false;
+                    const mathGrades = result.map(row => parseInt(row.matematika));
+                    const expectedGrades = [95, 88, 85, 70, 60];
+                    return JSON.stringify(mathGrades) === JSON.stringify(expectedGrades);
+                }
+            },
+            4: {
+                title: "Relasi Tabel (INNER JOIN)",
+                explanation: "Perintah <code>INNER JOIN</code> digunakan untuk menggabungkan baris dari dua atau lebih tabel berdasarkan kolom terkait yang ada di kedua tabel.",
+                task: "Tampilkan kolom <code>nama</code> dari tabel <code>siswa</code> dan kolom <code>matematika</code> dari tabel <code>nilai</code> dengan menggabungkan kedua tabel tersebut berdasarkan kecocokan ID.",
+                defaultQuery: "SELECT siswa.nama, nilai.matematika FROM siswa INNER JOIN nilai ON siswa.id = nilai.siswa_id",
+                hint: "Ketik: <code>SELECT siswa.nama, nilai.matematika FROM siswa INNER JOIN nilai ON siswa.id = nilai.siswa_id</code>",
+                validate: function (result, query) {
+                    const normQuery = query.toLowerCase().trim();
+                    if (!normQuery.includes('join') || !normQuery.includes('siswa') || !normQuery.includes('nilai')) return false;
+                    if (!Array.isArray(result) || result.length !== 5) return false;
+                    const raflyRow = result.find(row => row.nama === "Ahmad Rafli");
+                    if (!raflyRow || parseInt(raflyRow.matematika) !== 85) return false;
+                    const citraRow = result.find(row => row.nama === "Citra Kirana");
+                    if (!citraRow || parseInt(citraRow.matematika) !== 95) return false;
+                    return true;
+                }
+            },
+            5: {
+                title: "Menambahkan Data (INSERT INTO)",
+                explanation: "Perintah <code>INSERT INTO</code> digunakan untuk memasukkan baris data baru ke dalam tabel. Sintaks: <code>INSERT INTO nama_tabel VALUES (nilai1, nilai2, ...)</code>.",
+                task: "Masukkan data Anda sendiri ke dalam tabel <code>siswa</code>! Gunakan ID = <code>6</code>, nama bebas (misal: <code>'Rian Pratama'</code>), kelas = <code>7</code>, alamat bebas (misal: <code>'Jakarta'</code>). Setelah menjalankan kueri INSERT, jalankan kueri SELECT * FROM siswa untuk melihat hasilnya!",
+                defaultQuery: "INSERT INTO siswa VALUES (6, 'Rian Pratama', 7, 'Jakarta')",
+                hint: "Ketik: <code>INSERT INTO siswa VALUES (6, 'Rian Pratama', 7, 'Jakarta')</code>. Lalu kueri lagi dengan <code>SELECT * FROM siswa</code> untuk pembuktian!",
+                validate: function (result, query) {
+                    try {
+                        const check = alasql('SELECT * FROM siswa WHERE id = 6');
+                        return check && check.length > 0 && check[0].kelas === 7;
+                    } catch (e) {
+                        return false;
+                    }
+                }
+            }
+        };
+
+        // Initialize SQLite Simulator with initial schemas and data
+        function initSqlDatabase() {
+            try {
+                // Drop existing if any
+                alasql('DROP TABLE IF EXISTS siswa');
+                alasql('DROP TABLE IF EXISTS nilai');
+
+                alasql('CREATE TABLE siswa (id INT PRIMARY KEY, nama STRING, kelas INT, alamat STRING)');
+                alasql('INSERT INTO siswa VALUES (1, "Ahmad Rafli", 8, "Medan")');
+                alasql('INSERT INTO siswa VALUES (2, "Budi Santoso", 7, "Jakarta")');
+                alasql('INSERT INTO siswa VALUES (3, "Citra Kirana", 9, "Surabaya")');
+                alasql('INSERT INTO siswa VALUES (4, "Dina Lestari", 8, "Bandung")');
+                alasql('INSERT INTO siswa VALUES (5, "Eko Wijaya", 9, "Medan")');
+
+                alasql('CREATE TABLE nilai (siswa_id INT PRIMARY KEY, matematika INT, ipa INT, bahasa_inggris INT)');
+                alasql('INSERT INTO nilai VALUES (1, 85, 90, 88)');
+                alasql('INSERT INTO nilai VALUES (2, 70, 75, 80)');
+                alasql('INSERT INTO nilai VALUES (3, 95, 92, 96)');
+                alasql('INSERT INTO nilai VALUES (4, 60, 68, 72)');
+                alasql('INSERT INTO nilai VALUES (5, 88, 85, 90)');
+
+                updateSchemaBrowser();
+                console.log("SQL Database initialized successfully!");
+            } catch (err) {
+                console.error("Database initialization failed:", err);
+            }
+        }
+
+        // Generate HTML Table from Alasql result object array
+        function renderSqlTable(data) {
+            if (!data || data.length === 0) {
+                return `<div class="sql-empty-result"><i class="fa-solid fa-circle-info"></i> Query sukses, tetapi tidak ada baris data yang cocok/dikembalikan.</div>`;
+            }
+            if (!Array.isArray(data)) {
+                return `<div class="sql-empty-result text-success"><i class="fa-solid fa-circle-check"></i> Perintah berhasil dieksekusi. Hasil: ${data} baris terpengaruh.</div>`;
+            }
+
+            const columns = Object.keys(data[0]);
+            let html = '<table class="sql-result-table"><thead><tr>';
+            columns.forEach(col => {
+                html += `<th>${col}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+
+            data.forEach(row => {
+                html += '<tr>';
+                columns.forEach(col => {
+                    let val = row[col];
+                    if (val === null || val === undefined) val = '<span class="null-val">NULL</span>';
+                    html += `<td>${val}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table>';
+
+            return html;
+        }
+
+        // Dynamically build and refresh schema list
+        function updateSchemaBrowser() {
+            const container = document.querySelector('.schema-tables');
+            if (!container) return;
+
+            try {
+                const tables = alasql('SHOW TABLES');
+                let html = '';
+
+                tables.forEach(t => {
+                    const tableName = t.tableid;
+                    let cols = [];
+                    const tableObj = alasql.databases.alasql.tables[tableName];
+
+                    if (tableObj && tableObj.columns) {
+                        cols = tableObj.columns.map(c => ({ name: c.columnid, type: c.dbtypeid || 'TEXT' }));
+                    } else {
+                        const sample = alasql(`SELECT * FROM ${tableName} LIMIT 1`);
+                        if (sample && sample.length > 0) {
+                            cols = Object.keys(sample[0]).map(k => ({ name: k, type: typeof sample[0][k] === 'number' ? 'INTEGER' : 'TEXT' }));
+                        } else {
+                            cols = [{ name: 'id', type: 'INTEGER' }, { name: 'data', type: 'TEXT' }];
+                        }
+                    }
+
+                    html += `
+                    <div class="schema-table-item" id="schema-item-${tableName}">
+                        <button class="schema-table-btn" data-table="${tableName}">
+                            <i class="fa-solid fa-table"></i> <span>${tableName}</span> <i class="fa-solid fa-chevron-down fold-icon"></i>
+                        </button>
+                        <div class="schema-table-content" id="schema-${tableName}">
+                            <table class="mini-schema-table">
+                                <thead>
+                                    <tr><th>Kolom</th><th>Tipe</th></tr>
+                                </thead>
+                                <tbody>
+                                    ${cols.map(c => `<tr><td>${c.name}</td><td>${c.type}</td></tr>`).join('')}
+                                </tbody>
+                            </table>
+                            <button class="btn-preview-data" data-table="${tableName}">Lihat Data Live</button>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                attachSchemaListeners();
+            } catch (e) {
+                console.error("Error updating schema browser:", e);
+            }
+        }
+
+        function attachSchemaListeners() {
+            document.querySelectorAll('.schema-table-btn').forEach(btn => {
+                btn.onclick = function () {
+                    const item = this.parentElement;
+                    item.classList.toggle('active');
+                };
+            });
+
+            document.querySelectorAll('.btn-preview-data').forEach(btn => {
+                btn.onclick = function (e) {
+                    e.stopPropagation();
+                    const tableName = this.getAttribute('data-table');
+                    const sqlInput = document.getElementById('sqlInput');
+                    sqlInput.value = `SELECT * FROM ${tableName}`;
+
+                    // Auto run the preview query
+                    document.getElementById('runSql').click();
+                    document.querySelector('.editor-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+            });
+        }
+
+        // Load Lesson Levels
+        function loadLesson(levelNum) {
+            currentLevel = levelNum;
+            const lesson = lessonsData[levelNum];
+
+            // Update active states
+            document.querySelectorAll('.lesson-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (parseInt(tab.getAttribute('data-level')) === levelNum) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Update DOM details
+            document.getElementById('lessonTitle').innerHTML = `${levelNum}. ${lesson.title}`;
+            document.getElementById('lessonExplanation').innerHTML = lesson.explanation;
+            document.getElementById('lessonTask').innerHTML = lesson.task;
+            document.getElementById('hintText').innerHTML = lesson.hint;
+
+            // Hide hint by default
+            document.getElementById('hintText').classList.add('d-none');
+
+            // Load default query in Editor
+            document.getElementById('sqlInput').value = lesson.defaultQuery;
+
+            // Re-render lines
+            updateLineNumbers();
+        }
+
+        // Line numbering utility for textarea
+        function updateLineNumbers() {
+            const input = document.getElementById('sqlInput');
+            const linesContainer = document.querySelector('.line-numbers');
+            const lines = input.value.split('\n').length;
+            let linesHtml = '';
+            for (let i = 1; i <= Math.max(lines, 4); i++) {
+                linesHtml += `<span>${i}</span>`;
+            }
+            linesContainer.innerHTML = linesHtml;
+        }
+
+        // Trigger confetti visual effect
+        function triggerConfetti() {
+            const emojis = ['🎉', '🌟', '✨', '🎓', '🏆', '🍕', '💾', '💻'];
+            for (let i = 0; i < 45; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'confetti-particle';
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                particle.style.animationDelay = (Math.random() * 0.4) + 's';
+                particle.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 3000);
+            }
+        }
+
+        // Recalculate progress count
+        function updateProgressBadge() {
+            let completedCount = 0;
+            for (const key in completedLevels) {
+                if (completedLevels[key]) completedCount++;
+            }
+
+            document.getElementById('sqlProgress').innerText = `${completedCount}/5 Selesai`;
+
+            // Update tabs completed classes
+            document.querySelectorAll('.lesson-tab').forEach(tab => {
+                const lvl = parseInt(tab.getAttribute('data-level'));
+                const statusIcon = tab.querySelector('.tab-status');
+                if (completedLevels[lvl]) {
+                    tab.classList.add('completed');
+                    statusIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                } else {
+                    tab.classList.remove('completed');
+                    statusIcon.innerHTML = '<i class="fa-regular fa-circle"></i>';
+                }
+            });
+        }
+
+        // Init SQL listeners
+        document.addEventListener("DOMContentLoaded", () => {
+            initSqlDatabase();
+            loadLesson(1);
+
+            // Toggle Hints
+            document.getElementById('toggleHint').addEventListener('click', () => {
+                document.getElementById('hintText').classList.toggle('d-none');
+            });
+
+            // SQL helper snippets click insertion
+            document.querySelectorAll('.helper-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const snippet = this.getAttribute('data-insert');
+                    const sqlInput = document.getElementById('sqlInput');
+                    const startPos = sqlInput.selectionStart;
+                    const endPos = sqlInput.selectionEnd;
+
+                    sqlInput.value = sqlInput.value.substring(0, startPos) + snippet + sqlInput.value.substring(endPos, sqlInput.value.length);
+                    sqlInput.focus();
+                    sqlInput.selectionStart = startPos + snippet.length;
+                    sqlInput.selectionEnd = startPos + snippet.length;
+                    updateLineNumbers();
+                });
+            });
+
+            // Input textarea events
+            const sqlInput = document.getElementById('sqlInput');
+            sqlInput.addEventListener('input', updateLineNumbers);
+            sqlInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    const start = sqlInput.selectionStart;
+                    const end = sqlInput.selectionEnd;
+                    sqlInput.value = sqlInput.value.substring(0, start) + "    " + sqlInput.value.substring(end);
+                    sqlInput.selectionStart = sqlInput.selectionEnd = start + 4;
+                    updateLineNumbers();
+                }
+            });
+
+            // Tab Lesson selection clicks
+            document.querySelectorAll('.lesson-tab').forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const level = parseInt(this.getAttribute('data-level'));
+                    loadLesson(level);
+                });
+            });
+
+            // Run SQL Query
+            document.getElementById('runSql').addEventListener('click', () => {
+                const query = document.getElementById('sqlInput').value;
+                const outputTableContainer = document.getElementById('sqlOutputTable');
+                const rowCountContainer = document.getElementById('rowCount');
+                const statusContainer = document.getElementById('queryStatus');
+
+                try {
+                    const startTime = performance.now();
+                    const result = alasql(query);
+                    const endTime = performance.now();
+                    const execTime = (endTime - startTime).toFixed(1);
+
+                    // Render outputs
+                    outputTableContainer.innerHTML = renderSqlTable(result);
+
+                    let rowsText = '0 Baris';
+                    if (Array.isArray(result)) {
+                        rowsText = `${result.length} Baris`;
+                    } else if (typeof result === 'number') {
+                        rowsText = `${result} Baris`;
+                    }
+
+                    rowCountContainer.innerText = `${rowsText} Dikembalikan (${execTime}ms)`;
+                    statusContainer.innerHTML = `<span class="status-success"><i class="fa-solid fa-circle-check"></i> Query sukses dieksekusi dalam ${execTime}ms!</span>`;
+
+                    // Refresh Schema Browser in case of DDL/DML mutations
+                    updateSchemaBrowser();
+                } catch (err) {
+                    outputTableContainer.innerHTML = `
+                    <div class="sql-output-placeholder" style="color: #ef4444;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p style="font-family: monospace; max-width: 100%; text-align: left; padding: 10px; background: rgba(239, 68, 68, 0.05); border: 1px dashed rgba(239, 68, 68, 0.2); border-radius: 4px;">
+                            ${err.message || err}
+                        </p>
+                    </div>`;
+                    rowCountContainer.innerText = 'Eror Kueri';
+                    statusContainer.innerHTML = `<span class="status-error"><i class="fa-solid fa-circle-xmark"></i> SQL Syntax Error: Periksa kembali kueri Anda.</span>`;
+                }
+            });
+
+            // Validate SQL Answer
+            document.getElementById('validateSql').addEventListener('click', () => {
+                const query = document.getElementById('sqlInput').value;
+                const outputTableContainer = document.getElementById('sqlOutputTable');
+                const rowCountContainer = document.getElementById('rowCount');
+                const statusContainer = document.getElementById('queryStatus');
+
+                try {
+                    const result = alasql(query);
+
+                    // Run the specific validation logic for this level
+                    const isCorrect = lessonsData[currentLevel].validate(result, query);
+
+                    if (isCorrect) {
+                        completedLevels[currentLevel] = true;
+                        updateProgressBadge();
+
+                        // Show modal
+                        const modal = document.getElementById('celebrationModal');
+                        const modalMessage = document.getElementById('modalMessage');
+
+                        if (currentLevel < 5) {
+                            modalMessage.innerHTML = `Luar biasa! Anda sukses menyelesaikan <strong>Level ${currentLevel}: ${lessonsData[currentLevel].title}</strong>.<br>Kueri Anda berhasil dan database mengembalikan data yang tepat. Siap untuk tantangan selanjutnya?`;
+                            document.getElementById('nextLevelBtn').innerHTML = 'Lanjut ke Level Berikutnya <i class="fa-solid fa-arrow-right"></i>';
+                        } else {
+                            modalMessage.innerHTML = `<strong>Keren Banget! 🎉</strong><br>Anda telah berhasil menuntaskan seluruh 5 tingkat pembelajaran SQL di Bimbel AN-NUR! Sekarang Anda mengerti fondasi SELECT, WHERE, ORDER BY, JOIN, dan INSERT.`;
+                            document.getElementById('nextLevelBtn').innerHTML = 'Tutup & Terus Bereksperimen <i class="fa-solid fa-database"></i>';
+                        }
+
+                        modal.classList.remove('d-none');
+                        triggerConfetti();
+                    } else {
+                        statusContainer.innerHTML = `<span class="status-error"><i class="fa-solid fa-circle-info"></i> Jawaban Kurang Tepat: Hasil kueri Anda belum sesuai dengan kriteria tugas. Periksa petunjuk atau lihat struktur tabel.</span>`;
+                        // Auto-run the incorrect query so they see why
+                        outputTableContainer.innerHTML = renderSqlTable(result);
+                    }
+                } catch (err) {
+                    statusContainer.innerHTML = `<span class="status-error"><i class="fa-solid fa-circle-xmark"></i> Gagal Memvalidasi: Terjadi eror saat mengeksekusi kueri. Detail: ${err.message || err}</span>`;
+                }
+            });
+
+            // Modal next level buttons
+            document.getElementById('nextLevelBtn').addEventListener('click', () => {
+                document.getElementById('celebrationModal').classList.add('d-none');
+                if (currentLevel < 5) {
+                    loadLesson(currentLevel + 1);
+                    document.getElementById('runSql').click(); // Auto-run next level default
+                }
+            });
+
+            // Close modal when click outside card
+            document.getElementById('celebrationModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.classList.add('d-none');
+                }
+            });
+
+            // Reset DB
+            document.getElementById('resetDbBtn').addEventListener('click', () => {
+                if (confirm("Apakah Anda yakin ingin mengatur ulang basis data? Seluruh perubahan data Anda akan dikembalikan seperti semula.")) {
+                    initSqlDatabase();
+                    loadLesson(currentLevel);
+                    document.getElementById('runSql').click();
+                }
+            });
+
+            // Reset SQL input to default for current level
+            document.getElementById('resetSql').addEventListener('click', () => {
+                document.getElementById('sqlInput').value = lessonsData[currentLevel].defaultQuery;
+                updateLineNumbers();
+            });
+
+            // ==========================================================================
+            // SPREADSHEET REKAP PENDAFTARAN SYSTEM & ADMIN AUTH
+            // ==========================================================================
+
+            const defaultRegistrations = [
+                {
+                    name: "Ahmad Rafli",
+                    phone: "081234567890",
+                    class: "8",
+                    message: "Saya ingin mendaftar kelas Matematika dan Fisika",
+                    date: "2026-05-18 10:30"
+                },
+                {
+                    name: "Citra Kirana",
+                    phone: "081987654321",
+                    class: "9",
+                    message: "Ingin konsultasi PR Matematika 24/7",
+                    date: "2026-05-19 14:15"
+                },
+                {
+                    name: "Budi Santoso",
+                    phone: "085711223344",
+                    class: "7",
+                    message: "Tolong dibimbing untuk materi aljabar dasar",
+                    date: "2026-05-20 09:00"
+                }
+            ];
+
+            function getRegistrations() {
+                const stored = localStorage.getItem('hantech_registrations');
+                if (!stored) {
+                    localStorage.setItem('hantech_registrations', JSON.stringify(defaultRegistrations));
+                    return defaultRegistrations;
+                }
+                return JSON.parse(stored);
+            }
+
+            function saveRegistration(reg) {
+                const regs = getRegistrations();
+                regs.push(reg);
+                localStorage.setItem('hantech_registrations', JSON.stringify(regs));
+
+                // Only update and render the sheet if the admin is currently logged in and it's visible
+                if (isAdminLoggedIn()) {
+                    renderSpreadsheet();
+                }
+            }
+
+            function isAdminLoggedIn() {
+                return sessionStorage.getItem('hantech_admin_logged_in') === 'true';
+            }
+
+            function updateAdminVisibility() {
+                const rekapCard = document.getElementById('rekapPendaftaran');
+                if (!rekapCard) return;
+
+                if (isAdminLoggedIn()) {
+                    rekapCard.classList.remove('d-none');
+                    renderSpreadsheet();
+                } else {
+                    rekapCard.classList.add('d-none');
+                }
+            }
+
+            function renderSpreadsheet(filterQuery = "") {
+                const regs = getRegistrations();
+                const tbody = document.getElementById('spreadsheetBody');
+                const rowCountEl = document.getElementById('activeRowsCount');
+                if (!tbody) return;
+
+                tbody.innerHTML = "";
+
+                // Apply search filter if query is provided
+                const filtered = regs.filter(r => {
+                    const q = filterQuery.toLowerCase();
+                    return r.name.toLowerCase().includes(q) ||
+                        r.phone.toLowerCase().includes(q) ||
+                        (r.message && r.message.toLowerCase().includes(q)) ||
+                        `kelas ${r.class}`.toLowerCase().includes(q);
+                });
+
+                rowCountEl.innerText = `${filtered.length} baris data terdaftar`;
+
+                if (filtered.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="excel-empty-state">
+                                <i class="fa-solid fa-folder-open"></i>
+                                Tidak ada data pendaftar ${filterQuery ? 'yang cocok dengan pencarian' : 'saat ini'}.
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                filtered.forEach((reg, index) => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td class="row-num-col">${index + 1}</td>
+                        <td class="cell-bold">${escapeHtml(reg.name)}</td>
+                        <td>${escapeHtml(reg.phone)}</td>
+                        <td>
+                            <span class="class-badge class-${reg.class}">Kelas ${reg.class} SMP</span>
+                        </td>
+                        <td>${escapeHtml(reg.message || '-')}</td>
+                        <td class="cell-date">${reg.date}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            function escapeHtml(text) {
+                if (!text) return "";
+                return text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            // Bind User Form Submit
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('name').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const studentClass = document.getElementById('class').value;
+                    const message = document.getElementById('message').value.trim();
+
+                    if (!name || !phone || !studentClass) return;
+
+                    const now = new Date();
+                    const formattedDate = now.getFullYear() + '-' +
+                        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                        String(now.getDate()).padStart(2, '0') + ' ' +
+                        String(now.getHours()).padStart(2, '0') + ':' +
+                        String(now.getMinutes()).padStart(2, '0');
+
+                    const newReg = {
+                        name: name,
+                        phone: phone,
+                        class: studentClass,
+                        message: message,
+                        date: formattedDate
+                    };
+
+                    saveRegistration(newReg);
+
+                    // Reset the form
+                    contactForm.reset();
+
+                    if (isAdminLoggedIn()) {
+                        // If logged in as admin, show alert and flash the new row in the spreadsheet
+                        alert(`Terima kasih ${name}! Pendaftaran berhasil disimpan dan dimasukkan ke Spreadsheet di bawah.`);
+                        const rekapCard = document.getElementById('rekapPendaftaran');
+                        if (rekapCard) {
+                            rekapCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            setTimeout(() => {
+                                const rows = document.querySelectorAll('#spreadsheetBody tr');
+                                if (rows.length > 0) {
+                                    const lastRow = rows[rows.length - 1];
+                                    lastRow.classList.add('new-row-flash');
+                                }
+                            }, 800);
+                        }
+                    } else {
+                        // Standard user feedback: Completely silent, no spreadsheet shows!
+                        alert(`Terima kasih! Pesan Anda telah terkirim. Admin kami akan menghubungi Anda dalam 1x24 jam.`);
+                    }
+                });
+            }
+
+            // Export to CSV Functionality
+            document.getElementById('exportCsvBtn').addEventListener('click', () => {
+                const regs = getRegistrations();
+                if (regs.length === 0) {
+                    alert("Tidak ada data untuk diexport!");
+                    return;
+                }
+
+                let csvContent = "data:text/csv;charset=utf-8,";
+                csvContent += "No,Nama Lengkap,Nomor WhatsApp,Kelas,Pesan/Pertanyaan,Tanggal Pendaftaran\n";
+
+                regs.forEach((reg, index) => {
+                    const row = [
+                        index + 1,
+                        `"${reg.name.replace(/"/g, '""')}"`,
+                        `"${reg.phone.replace(/"/g, '""')}"`,
+                        `"Kelas ${reg.class} SMP"`,
+                        `"${(reg.message || '').replace(/"/g, '""')}"`,
+                        `"${reg.date}"`
+                    ];
+                    csvContent += row.join(",") + "\n";
+                });
+
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "rekap_pendaftaran_hantech.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            // Reset/Clear Data Functionality
+            document.getElementById('clearDataBtn').addEventListener('click', () => {
+                if (confirm("Apakah Anda yakin ingin menghapus semua data pendaftar? Tindakan ini tidak bisa dibatalkan.")) {
+                    localStorage.setItem('hantech_registrations', JSON.stringify([]));
+                    renderSpreadsheet();
+                }
+            });
+
+            // Live Search Filter
+            document.getElementById('sheetSearch').addEventListener('input', (e) => {
+                renderSpreadsheet(e.target.value);
+            });
+
+            // Manual Row Entry Panel
+            const addManualBtn = document.getElementById('addManualBtn');
+            const manualEntryForm = document.getElementById('manualEntryForm');
+            const cancelManualBtn = document.getElementById('cancelManualBtn');
+            const saveManualBtn = document.getElementById('saveManualBtn');
+
+            addManualBtn.addEventListener('click', () => {
+                manualEntryForm.classList.toggle('d-none');
+            });
+
+            cancelManualBtn.addEventListener('click', () => {
+                manualEntryForm.classList.add('d-none');
+                clearManualForm();
+            });
+
+            function clearManualForm() {
+                document.getElementById('manualName').value = "";
+                document.getElementById('manualPhone').value = "";
+                document.getElementById('manualClass').value = "";
+                document.getElementById('manualMessage').value = "";
+            }
+
+            saveManualBtn.addEventListener('click', () => {
+                const name = document.getElementById('manualName').value.trim();
+                const phone = document.getElementById('manualPhone').value.trim();
+                const studentClass = document.getElementById('manualClass').value;
+                const message = document.getElementById('manualMessage').value.trim();
+
+                if (!name || !phone || !studentClass) {
+                    alert("Mohon lengkapi Nama, WhatsApp, dan Kelas!");
+                    return;
+                }
+
+                const now = new Date();
+                const formattedDate = now.getFullYear() + '-' +
+                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(now.getDate()).padStart(2, '0') + ' ' +
+                    String(now.getHours()).padStart(2, '0') + ':' +
+                    String(now.getMinutes()).padStart(2, '0');
+
+                const newReg = {
+                    name: name,
+                    phone: phone,
+                    class: studentClass,
+                    message: message,
+                    date: formattedDate
+                };
+
+                saveRegistration(newReg);
+                clearManualForm();
+                manualEntryForm.classList.add('d-none');
+
+                setTimeout(() => {
+                    const rows = document.querySelectorAll('#spreadsheetBody tr');
+                    if (rows.length > 0) {
+                        const lastRow = rows[rows.length - 1];
+                        lastRow.classList.add('new-row-flash');
+                    }
+                }, 100);
+            });
+
+            // ==========================================================================
+            // ADMIN LOGIN & AUTHENTICATION HANDLERS
+            // ==========================================================================
+
+            const adminLoginModal = document.getElementById('adminLoginModal');
+            const adminPasswordInput = document.getElementById('adminPassword');
+            const submitLoginBtn = document.getElementById('submitLoginBtn');
+            const closeLoginBtn = document.getElementById('closeLoginBtn');
+            const loginErrorMsg = document.getElementById('loginErrorMsg');
+            const logoutAdminBtn = document.getElementById('logoutAdminBtn');
+
+            function openLoginModal() {
+                if (isAdminLoggedIn()) {
+                    // If already logged in, scroll to spreadsheet directly
+                    const rekapCard = document.getElementById('rekapPendaftaran');
+                    if (rekapCard) rekapCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+                adminPasswordInput.value = "";
+                loginErrorMsg.classList.add('d-none');
+                adminLoginModal.classList.remove('d-none');
+                adminPasswordInput.focus();
+            }
+
+            function closeLoginModal() {
+                adminLoginModal.classList.add('d-none');
+                loginErrorMsg.classList.add('d-none');
+                adminPasswordInput.value = "";
+            }
+
+            function handleAdminLogin() {
+                const password = adminPasswordInput.value.trim();
+
+                // Allow both "admin123" and "annur2026"
+                if (password === "admin123" || password === "hantech2026") {
+                    sessionStorage.setItem('hantech_admin_logged_in', 'true');
+                    updateAdminVisibility();
+                    closeLoginModal();
+
+                    // Alert success and scroll
+                    alert("Akses Admin Terverifikasi! Spreadsheet Rekap Pendaftaran telah dibuka.");
+                    setTimeout(() => {
+                        const rekapCard = document.getElementById('rekapPendaftaran');
+                        if (rekapCard) {
+                            rekapCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 300);
+                } else {
+                    loginErrorMsg.classList.remove('d-none');
+                    // Add shake animation to the modal card
+                    const card = adminLoginModal.querySelector('.sql-modal-card');
+                    card.style.animation = 'none';
+                    card.offsetHeight; // Trigger reflow
+                    card.style.animation = 'shake 0.4s ease';
+                }
+            }
+
+            // Event Listeners for login
+            document.getElementById('adminPortalLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                openLoginModal();
+            });
+
+            closeLoginBtn.addEventListener('click', closeLoginModal);
+
+            submitLoginBtn.addEventListener('click', handleAdminLogin);
+
+            adminPasswordInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleAdminLogin();
+                }
+            });
+
+            // Close login modal when clicking outside card
+            adminLoginModal.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeLoginModal();
+                }
+            });
+
+            // Log Out Admin Mode
+            logoutAdminBtn.addEventListener('click', () => {
+                if (confirm("Apakah Anda yakin ingin keluar dari Mode Admin dan menyembunyikan spreadsheet?")) {
+                    sessionStorage.removeItem('hantech_admin_logged_in');
+                    updateAdminVisibility();
+
+                    // Smooth scroll back to Kontak form
+                    const kontakSection = document.getElementById('kontak');
+                    if (kontakSection) {
+                        kontakSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+
+            // Keyboard shortcut Ctrl + Shift + A to open portal login
+            window.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                    e.preventDefault();
+                    openLoginModal();
+                }
+            });
+
+            // Add shake animation styles dynamically if not present
+            if (!document.getElementById('shakeAnimationStyles')) {
+                const style = document.createElement('style');
+                style.id = 'shakeAnimationStyles';
+                style.innerHTML = `
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        20%, 60% { transform: translateX(-8px); }
+                        40%, 80% { transform: translateX(8px); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Initial check for admin session
+            updateAdminVisibility();
+        });
+    </script>
+</body>
+
+</html>
