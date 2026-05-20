@@ -623,57 +623,19 @@ body {
     opacity: 1;
 }
 
-.program-icon {
-    width: 68px;
-    height: 68px;
+.program-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
     border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 28px;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.program-card:hover .program-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.icon-math {
-    background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(45, 212, 191, 0.25));
-    color: var(--primary-dark);
-    border: 1px solid rgba(13, 148, 136, 0.2);
-}
-
-.icon-science {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(129, 140, 248, 0.25));
-    color: var(--secondary-dark);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-}
-
-.icon-english {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.25));
-    color: #b45309;
-    border: 1px solid rgba(245, 158, 11, 0.2);
-}
-
-.icon-coding {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.1), rgba(51, 65, 85, 0.2));
-    color: var(--dark);
-    border: 1px solid rgba(15, 23, 42, 0.15);
-}
-
-.icon-robotics {
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 113, 133, 0.25));
-    color: #be123c;
-    border: 1px solid rgba(244, 63, 94, 0.2);
-}
-
-.icon-iot {
-    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(56, 189, 248, 0.25));
-    color: #0369a1;
-    border: 1px solid rgba(14, 165, 233, 0.2);
+.program-card:hover .program-img {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.2);
 }
 
 .program-card h3 {
@@ -3578,10 +3540,83 @@ body {
     }
 }
 
-/* Responsive Program Slider */
+/* Responsive Program Slider & Global Layouts */
 @media (max-width: 992px) {
     .program-card {
         min-width: calc(50% - 15px);
+    }
+    .hero-grid, .minilab-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    .hero-content {
+        align-items: center;
+    }
+    .hero-stats {
+        justify-content: center;
+    }
+    .minilab-info {
+        text-align: center;
+    }
+    .lab-features {
+        justify-content: center;
+    }
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    .playground-bento {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    .sql-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-brand {
+        align-items: center;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+    .manual-form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 }
 
@@ -3595,5 +3630,22 @@ body {
     }
     .slider-btn {
         display: none;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-full {
+        width: 100%;
+    }
+    .playground-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .stat-item h3 {
+        font-size: 1.8rem;
     }
 }
