@@ -1,59 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
+---
+layout: default
+title: Home
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bimbingan Belajar HanTech Education - Solusi Belajar Terbaik SMP & SQL Playground</title>
-    <meta name="description"
-        content="Portal interaktif Bimbingan Belajar HanTech Education SMP. Menampilkan program bimbingan unggulan, simulator logika Python, dan playground SQL interaktif untuk siswa belajar basis data secara langsung.">
-    <meta name="keywords"
-        content="Bimbel HanTech Education, Bimbingan Belajar, SQL Playground, Belajar SQL Interaktif, Python Simulator, Materi SMP">
-    <meta name="author" content="Developer Portfolio">
-    <!-- Google Fonts for premium typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome for modern icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styke.css">
-    <!-- AlaSQL for in-memory database simulation -->
-    <script src="https://cdn.jsdelivr.net/npm/alasql@4.4.0/dist/alasql.min.js"></script>
-</head>
-
-<body>
-    <!-- Background Glow Blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <!-- Header & Navigation -->
-    <header class="header">
-        <div class="container navbar">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <span>HanTech <span class="logo-sub">Education</span></span>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <nav class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-                    <li><a href="#program"><i class="fa-solid fa-book-open"></i> Program</a></li>
-                    <li><a href="#playground-hub"><i class="fa-solid fa-gamepad"></i> Playgrounds</a></li>
-                    <li><a href="#minilab"><i class="fa-solid fa-flask"></i> Mini-Lab</a></li>
-                    <li><a href="#sqllab"><i class="fa-solid fa-database"></i> SQL Lab</a></li>
-                    <li><a href="#kontak"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
@@ -1061,100 +1010,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-glow-bar"></div>
-        
-        <!-- Ambient Glowing Background Blobs for 3D depth -->
-        <div class="footer-blob footer-blob-1"></div>
-        <div class="footer-blob footer-blob-2"></div>
-
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <span>HanTech <span class="logo-sub">Education</span></span>
-                </div>
-                <p>Pendidikan berkualitas tinggi berlandaskan nilai-nilai karakter mulia dan keunggulan teknologi akademik untuk tingkat Sekolah Menengah Pertama (SMP).</p>
-                
-                <!-- Curriculum & Technology Partner Badges -->
-                <div class="partner-badges">
-                    <span class="partner-title">Kurikulum & Partner:</span>
-                    <div class="badge-icons">
-                        <i class="fa-brands fa-html5" title="HTML5 & Web Tech"></i>
-                        <i class="fa-brands fa-python" title="Python Programming"></i>
-                        <i class="fa-solid fa-database" title="SQL Database"></i>
-                        <i class="fa-solid fa-microchip" title="Arduino IoT"></i>
-                        <i class="fa-solid fa-robot" title="Robotics"></i>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook" class="social-facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram" class="social-instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube" class="social-youtube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" aria-label="TikTok" class="social-tiktok"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <h3>Navigasi</h3>
-                <ul>
-                    <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
-                    <li><a href="#program"><i class="fa-solid fa-chevron-right"></i> Program Belajar</a></li>
-                    <li><a href="#minilab"><i class="fa-solid fa-chevron-right"></i> Mini-Lab</a></li>
-                    <li><a href="#sqllab"><i class="fa-solid fa-chevron-right"></i> SQL Lab</a></li>
-                    <li><a href="#kontak"><i class="fa-solid fa-chevron-right"></i> Daftar Les</a></li>
-                    <li><a href="#" id="adminPortalLink"><i class="fa-solid fa-key"></i> Portal Admin</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>Layanan</h3>
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Konsultasi PR</a></li>
-                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Try Out Berkala</a></li>
-                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Laporan Evaluasi</a></li>
-                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Bimbingan Karakter</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>Hubungi & Subscribe</h3>
-                <ul class="footer-contact-list" style="margin-bottom: 20px;">
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Jl. Raya Alumunium, Medan, Indonesia</span>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+62 822 7207 3765</span>
-                    </li>
-                </ul>
-
-                <!-- Elegant Glassmorphic Newsletter Widget -->
-                <div class="footer-newsletter">
-                    <p class="newsletter-desc">Dapatkan info program promo & materi pelajaran gratis langsung ke email Anda.</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" id="newsletterEmail" placeholder="Alamat Email Anda" required>
-                        <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
-                    <div id="newsletterSuccess" class="newsletter-success d-none">
-                        <i class="fa-solid fa-circle-check"></i> Berhasil Berlangganan! Terima kasih.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container footer-bottom-flex">
-                <p>&copy; 2026 Bimbingan Belajar HanTech Education. All Rights Reserved.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-danger"></i> for HanTech Education Students</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Interactive script for Navbar & Mini-Lab algorithm -->
     <script>
@@ -3009,12 +2864,4 @@
             }
         });
     </script>
-
-    <!-- Floating Action Button (Daftar Sekarang) -->
-    <a href="#kontak" class="floating-register-btn" id="floatingRegisterBtn">
-        <i class="fa-solid fa-pen-to-square"></i>
-        <span>Daftar Sekarang</span>
-    </a>
-</body>
-
-</html>
+

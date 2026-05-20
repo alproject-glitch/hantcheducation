@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+{% include head.html %}
+<body>
+    <!-- Background Glow Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    {% include header.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <!-- Floating Action Button (Daftar Sekarang) -->
+    <a href="#kontak" class="floating-register-btn" id="floatingRegisterBtn">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <span>Daftar Sekarang</span>
+    </a>
+</body>
+</html>

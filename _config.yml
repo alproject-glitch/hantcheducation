@@ -1,0 +1,9 @@
+title: HanTech Education
+description: Lembaga Bimbingan Belajar Modern berbasis STEM & Bahasa untuk tingkat SMP.
+theme: jekyll-theme-cayman # A default aesthetic theme, though we use custom CSS.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - scratch/
+  - "*.py"
