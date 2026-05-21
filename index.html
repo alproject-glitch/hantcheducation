@@ -3754,6 +3754,7 @@ console.log("Selesai!");
     }
 
     // --- Secret Trigger ---
+    // 1. Keyboard trigger (Desktop): Type "admin"
     document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         secretAdminCode += e.key.toLowerCase();
@@ -3765,6 +3766,26 @@ console.log("Selesai!");
             secretAdminCode = "";
         }
     });
+
+    // 2. Tap trigger (Mobile): Tap the header logo 5 times within 3 seconds
+    let logoTapCount = 0;
+    let logoTapTimeout;
+    const siteLogo = document.querySelector('.logo');
+    if (siteLogo) {
+        siteLogo.addEventListener('click', () => {
+            logoTapCount++;
+            clearTimeout(logoTapTimeout);
+            logoTapTimeout = setTimeout(() => {
+                logoTapCount = 0;
+            }, 3000);
+
+            if (logoTapCount === 5) {
+                adminTtsPanel.style.display = 'block';
+                showInputMode();
+                logoTapCount = 0;
+            }
+        });
+    }
 
     // --- Close ---
     closeTtsBtn.addEventListener('click', () => {
