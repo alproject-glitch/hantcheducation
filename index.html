@@ -3448,3 +3448,76 @@ console.log("Selesai!");
         }
     });
 </script>
+
+<!-- HIDDEN ADMIN TTS PANEL -->
+<div id="adminTtsPanel" style="display:none; position:fixed; bottom:20px; right:20px; background:#111; border:2px solid #ffb703; border-radius:10px; padding:20px; z-index:9999; box-shadow:0 0 20px rgba(255, 183, 3, 0.5); width:300px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="color:#ffb703; margin:0; font-size:1.2rem;"><i class="fa-solid fa-user-secret"></i> Admin TTS</h3>
+        <button id="closeTtsBtn" style="background:transparent; border:none; color:#fff; cursor:pointer; font-size:1.5rem; line-height:1;">&times;</button>
+    </div>
+    <textarea id="ttsText" style="width:100%; height:80px; background:#222; color:#fff; border:1px solid #444; border-radius:5px; padding:10px; margin-bottom:10px; font-family:inherit; resize:none;" placeholder="Masukkan teks bahasa Indonesia..."></textarea>
+    <button id="playTtsBtn" class="btn btn-full" style="background:#ffb703; color:#000; font-weight:bold; width:100%; padding:10px; border:none; border-radius:5px; cursor:pointer;"><i class="fa-solid fa-volume-high"></i> Bacakan Teks</button>
+</div>
+
+<script>
+    // Hidden Admin TTS Logic (Konami Code Style: type "admin")
+    let secretAdminCode = "";
+    const targetAdminCode = "admin";
+    const adminTtsPanel = document.getElementById('adminTtsPanel');
+    const closeTtsBtn = document.getElementById('closeTtsBtn');
+    const playTtsBtn = document.getElementById('playTtsBtn');
+    const ttsText = document.getElementById('ttsText');
+
+    document.addEventListener('keydown', (e) => {
+        // Abaikan jika user sedang mengetik di dalam input/textarea (kecuali escape)
+        if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        
+        // Simpan riwayat ketikan
+        secretAdminCode += e.key.toLowerCase();
+        
+        // Batasi panjang string
+        if (secretAdminCode.length > targetAdminCode.length) {
+            secretAdminCode = secretAdminCode.slice(secretAdminCode.length - targetAdminCode.length);
+        }
+        
+        // Jika cocok dengan kata sandi "admin"
+        if (secretAdminCode === targetAdminCode) {
+            adminTtsPanel.style.display = 'block';
+            secretAdminCode = ""; // reset
+        }
+    });
+
+    closeTtsBtn.addEventListener('click', () => {
+        adminTtsPanel.style.display = 'none';
+        window.speechSynthesis.cancel(); // Matikan suara jika sedang bicara
+    });
+
+    playTtsBtn.addEventListener('click', () => {
+        const text = ttsText.value.trim();
+        if(!text) return;
+        
+        // Batalkan antrean suara sebelumnya
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'id-ID'; // Paksa ke aksen Bahasa Indonesia
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        
+        // Coba cari voice khusus ID jika tersedia di perangkat
+        const voices = window.speechSynthesis.getVoices();
+        const idVoice = voices.find(v => v.lang === 'id-ID' || v.lang.includes('id'));
+        if(idVoice) {
+            utterance.voice = idVoice;
+        }
+        
+        window.speechSynthesis.speak(utterance);
+    });
+
+    // Pancing browser untuk load voices di awal
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+</script>
+</body>
+</html>
