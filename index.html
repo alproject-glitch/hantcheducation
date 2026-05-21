@@ -3450,74 +3450,260 @@ console.log("Selesai!");
 </script>
 
 <!-- HIDDEN ADMIN TTS PANEL -->
-<div id="adminTtsPanel" style="display:none; position:fixed; bottom:20px; right:20px; background:#111; border:2px solid #ffb703; border-radius:10px; padding:20px; z-index:9999; box-shadow:0 0 20px rgba(255, 183, 3, 0.5); width:300px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-        <h3 style="color:#ffb703; margin:0; font-size:1.2rem;"><i class="fa-solid fa-user-secret"></i> Admin TTS</h3>
-        <button id="closeTtsBtn" style="background:transparent; border:none; color:#fff; cursor:pointer; font-size:1.5rem; line-height:1;">&times;</button>
+<style>
+    #adminTtsPanel {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #111;
+        border: 2px solid #ffb703;
+        border-radius: 14px;
+        padding: 20px;
+        z-index: 9999;
+        box-shadow: 0 0 30px rgba(255, 183, 3, 0.4);
+        width: 300px;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+    }
+    .tts-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .tts-title { color: #ffb703; margin: 0; font-size: 1rem; font-weight: 700; }
+    .tts-close-btn {
+        background: transparent;
+        border: none;
+        color: #888;
+        cursor: pointer;
+        font-size: 1.4rem;
+        line-height: 1;
+        transition: color 0.2s;
+    }
+    .tts-close-btn:hover { color: #fff; }
+
+    /* --- INPUT MODE --- */
+    #ttsInputMode textarea {
+        width: 100%;
+        height: 90px;
+        background: #1a1a1a;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 12px;
+        font-family: inherit;
+        font-size: 0.9rem;
+        resize: none;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    #ttsInputMode textarea:focus { border-color: #ffb703; }
+    #ttsPlayBtn {
+        width: 100%;
+        padding: 10px;
+        background: linear-gradient(135deg, #ffb703, #ff8500);
+        color: #000;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: transform 0.1s, box-shadow 0.2s;
+    }
+    #ttsPlayBtn:hover { box-shadow: 0 4px 15px rgba(255,183,3,0.5); transform: translateY(-1px); }
+
+    /* --- SPEAKING MODE --- */
+    #ttsSpeakingMode {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .tts-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffb703, #ff5400);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        color: white;
+        position: relative;
+        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.5);
+        animation: none;
+    }
+    .tts-avatar.speaking {
+        animation: pulse-ring 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+        0%   { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.6); }
+        70%  { box-shadow: 0 0 0 20px rgba(255, 183, 3, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0); }
+    }
+    .tts-wave-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 30px;
+    }
+    .tts-wave-bars span {
+        display: inline-block;
+        width: 5px;
+        background: #ffb703;
+        border-radius: 3px;
+        min-height: 5px;
+        animation: none;
+    }
+    .tts-wave-bars.active span:nth-child(1) { animation: wave 0.9s ease infinite; }
+    .tts-wave-bars.active span:nth-child(2) { animation: wave 0.9s ease 0.15s infinite; }
+    .tts-wave-bars.active span:nth-child(3) { animation: wave 0.9s ease 0.3s infinite; }
+    .tts-wave-bars.active span:nth-child(4) { animation: wave 0.9s ease 0.45s infinite; }
+    .tts-wave-bars.active span:nth-child(5) { animation: wave 0.9s ease 0.6s infinite; }
+    @keyframes wave {
+        0%, 100% { height: 5px; }
+        50%       { height: 25px; }
+    }
+    .tts-speaking-label {
+        color: #ffb703;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    #ttsEditChatBtn {
+        margin-top: 5px;
+        background: rgba(255,183,3,0.1);
+        border: 1px solid #ffb703;
+        color: #ffb703;
+        border-radius: 8px;
+        padding: 7px 18px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: background 0.2s;
+    }
+    #ttsEditChatBtn:hover { background: rgba(255,183,3,0.25); }
+</style>
+
+<div id="adminTtsPanel">
+    <div class="tts-header">
+        <h3 class="tts-title"><i class="fa-solid fa-user-secret"></i> Admin TTS</h3>
+        <button class="tts-close-btn" id="closeTtsBtn">&times;</button>
     </div>
-    <textarea id="ttsText" style="width:100%; height:80px; background:#222; color:#fff; border:1px solid #444; border-radius:5px; padding:10px; margin-bottom:10px; font-family:inherit; resize:none;" placeholder="Masukkan teks bahasa Indonesia..."></textarea>
-    <button id="playTtsBtn" class="btn btn-full" style="background:#ffb703; color:#000; font-weight:bold; width:100%; padding:10px; border:none; border-radius:5px; cursor:pointer;"><i class="fa-solid fa-volume-high"></i> Bacakan Teks</button>
+
+    <!-- INPUT MODE -->
+    <div id="ttsInputMode">
+        <textarea id="ttsText" placeholder="Masukkan teks bahasa Indonesia..."></textarea>
+        <button id="ttsPlayBtn"><i class="fa-solid fa-play"></i>&nbsp; Bacakan Teks</button>
+    </div>
+
+    <!-- SPEAKING MODE -->
+    <div id="ttsSpeakingMode">
+        <div class="tts-avatar" id="ttsAvatar">
+            <i class="fa-solid fa-volume-high"></i>
+        </div>
+        <div class="tts-wave-bars" id="ttsWaveBars">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="tts-speaking-label">Sedang Berbicara...</div>
+        <button id="ttsEditChatBtn"><i class="fa-solid fa-message"></i> Ganti Teks</button>
+    </div>
 </div>
 
 <script>
-    // Hidden Admin TTS Logic (Konami Code Style: type "admin")
+    // ============================
+    // ADMIN TTS - Secret Feature
+    // Ketik "admin" di halaman ini
+    // ============================
     let secretAdminCode = "";
     const targetAdminCode = "admin";
-    const adminTtsPanel = document.getElementById('adminTtsPanel');
-    const closeTtsBtn = document.getElementById('closeTtsBtn');
-    const playTtsBtn = document.getElementById('playTtsBtn');
-    const ttsText = document.getElementById('ttsText');
+    const adminTtsPanel   = document.getElementById('adminTtsPanel');
+    const closeTtsBtn     = document.getElementById('closeTtsBtn');
+    const ttsPlayBtn      = document.getElementById('ttsPlayBtn');
+    const ttsText         = document.getElementById('ttsText');
+    const ttsInputMode    = document.getElementById('ttsInputMode');
+    const ttsSpeakingMode = document.getElementById('ttsSpeakingMode');
+    const ttsAvatar       = document.getElementById('ttsAvatar');
+    const ttsWaveBars     = document.getElementById('ttsWaveBars');
+    const ttsEditChatBtn  = document.getElementById('ttsEditChatBtn');
 
+    // --- Helpers ---
+    function showInputMode() {
+        ttsInputMode.style.display  = 'block';
+        ttsSpeakingMode.style.display = 'none';
+        window.speechSynthesis.cancel();
+        ttsAvatar.classList.remove('speaking');
+        ttsWaveBars.classList.remove('active');
+    }
+    function showSpeakingMode() {
+        ttsInputMode.style.display    = 'none';
+        ttsSpeakingMode.style.display = 'flex';
+        ttsAvatar.classList.add('speaking');
+        ttsWaveBars.classList.add('active');
+    }
+
+    // --- Secret Trigger ---
     document.addEventListener('keydown', (e) => {
-        // Abaikan jika user sedang mengetik di dalam input/textarea (kecuali escape)
-        if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-        
-        // Simpan riwayat ketikan
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         secretAdminCode += e.key.toLowerCase();
-        
-        // Batasi panjang string
-        if (secretAdminCode.length > targetAdminCode.length) {
-            secretAdminCode = secretAdminCode.slice(secretAdminCode.length - targetAdminCode.length);
-        }
-        
-        // Jika cocok dengan kata sandi "admin"
+        if (secretAdminCode.length > targetAdminCode.length)
+            secretAdminCode = secretAdminCode.slice(-targetAdminCode.length);
         if (secretAdminCode === targetAdminCode) {
             adminTtsPanel.style.display = 'block';
-            secretAdminCode = ""; // reset
+            showInputMode();
+            secretAdminCode = "";
         }
     });
 
+    // --- Close ---
     closeTtsBtn.addEventListener('click', () => {
         adminTtsPanel.style.display = 'none';
-        window.speechSynthesis.cancel(); // Matikan suara jika sedang bicara
+        window.speechSynthesis.cancel();
     });
 
-    playTtsBtn.addEventListener('click', () => {
+    // --- Back to Input ---
+    ttsEditChatBtn.addEventListener('click', () => showInputMode());
+
+    // --- Play ---
+    ttsPlayBtn.addEventListener('click', () => {
         const text = ttsText.value.trim();
-        if(!text) return;
-        
-        // Batalkan antrean suara sebelumnya
+        if (!text) { ttsText.focus(); return; }
+
         window.speechSynthesis.cancel();
-        
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'id-ID'; // Paksa ke aksen Bahasa Indonesia
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-        
-        // Coba cari voice khusus ID jika tersedia di perangkat
-        const voices = window.speechSynthesis.getVoices();
-        const idVoice = voices.find(v => v.lang === 'id-ID' || v.lang.includes('id'));
-        if(idVoice) {
-            utterance.voice = idVoice;
-        }
-        
+
+        const utterance   = new SpeechSynthesisUtterance(text);
+        utterance.lang    = 'id-ID';
+        utterance.rate    = 1.45;   // Lebih cepat
+        utterance.pitch   = 1.05;
+
+        // Cari voice Bahasa Indonesia
+        const voices  = window.speechSynthesis.getVoices();
+        const idVoice = voices.find(v => v.lang === 'id-ID') ||
+                        voices.find(v => v.lang.startsWith('id'));
+        if (idVoice) utterance.voice = idVoice;
+
+        utterance.onstart = () => showSpeakingMode();
+        utterance.onend   = () => {
+            ttsAvatar.classList.remove('speaking');
+            ttsWaveBars.classList.remove('active');
+        };
+        utterance.onerror = () => showInputMode();
+
         window.speechSynthesis.speak(utterance);
     });
 
-    // Pancing browser untuk load voices di awal
-    if (speechSynthesis.onvoiceschanged !== undefined) {
+    // Preload voices
+    window.speechSynthesis.getVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined)
         speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-    }
 </script>
 </body>
 </html>
