@@ -691,22 +691,28 @@ title: Home
                             <h3><i class="fa-brands fa-html5" style="color:#e34f26;"></i> Live HTML Editor</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
-                            <textarea id="html-sim-input" style="width:100%;height:120px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;"><h1>Hello HanTech</h1>
-<p>Belajar HTML itu menyenangkan!</p>
-<button style="padding:10px;background:blue;color:white;border:none;border-radius:4px;">Klik Saya</button></textarea>
-                            <button id="runHtmlBtn" class="btn btn-full" style="background:#e34f26;color:white;margin-top:10px;box-shadow: 0 4px 15px rgba(227, 79, 38, 0.3);"><i class="fa-solid fa-play"></i> Render HTML</button>
+                            <textarea id="html-sim-input" style="width:100%;height:150px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;"><html>
+<head>
+<style>
+  body { font-family: sans-serif; text-align: center; color: white; background: #222; }
+  button { padding: 10px 20px; background: #e34f26; border: none; color: white; border-radius: 5px; cursor: pointer; margin-top: 10px;}
+</style>
+</head>
+<body>
+  <h2>Hello HanTech!</h2>
+  <p>Coba klik tombol di bawah ini:</p>
+  <button onclick="alert('HTML Interaktif Berhasil!')">Coba Klik</button>
+</body>
+</html></textarea>
+                            <button id="runHtmlBtn" class="btn btn-full" style="background:#e34f26;color:white;margin-top:10px;box-shadow: 0 4px 15px rgba(227, 79, 38, 0.3);"><i class="fa-solid fa-play"></i> Render di Iframe</button>
                         </div>
                     </div>
                     <div class="playground-card">
                         <div class="playground-header">
-                            <h3><i class="fa-solid fa-eye"></i> Output Visual</h3>
+                            <h3><i class="fa-solid fa-eye"></i> Visual Output (Iframe)</h3>
                         </div>
-                        <div class="playground-body" style="padding: 20px; background:#fff; border-radius:12px; min-height: 200px; color:#000;">
-                            <div id="html-sim-output">
-                                <h1>Hello HanTech</h1>
-                                <p>Belajar HTML itu menyenangkan!</p>
-                                <button style="padding:10px;background:blue;color:white;border:none;border-radius:4px;">Klik Saya</button>
-                            </div>
+                        <div class="playground-body" style="padding: 0; background:#fff; border-radius:12px; height: 100%; min-height: 250px; overflow: hidden; display:flex;">
+                            <iframe id="html-sim-output" style="width:100%; height:100%; border:none; min-height: 250px;"></iframe>
                         </div>
                     </div>
                 </div>
@@ -720,22 +726,36 @@ title: Home
                             <h3><i class="fa-brands fa-css3-alt" style="color:#264de4;"></i> CSS Styler</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
-                            <textarea id="css-sim-input" style="width:100%;height:120px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;">.box {
-  width: 100px;
-  height: 100px;
-  background-color: #264de4;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}</textarea>
-                            <button id="runCssBtn" class="btn btn-full" style="background:#264de4;color:white;margin-top:10px;box-shadow: 0 4px 15px rgba(38, 77, 228, 0.3);"><i class="fa-solid fa-play"></i> Terapkan CSS</button>
+                            <textarea id="css-sim-input" style="width:100%;height:150px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;">.profil-card {
+  background: linear-gradient(45deg, #264de4, #0f2c99);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.profil-card:hover {
+  transform: scale(1.05);
+}
+.profil-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
+.profil-btn { background: #ffb703; color: #000; padding: 8px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }</textarea>
+                            <button id="runCssBtn" class="btn btn-full" style="background:#264de4;color:white;margin-top:10px;box-shadow: 0 4px 15px rgba(38, 77, 228, 0.3);"><i class="fa-solid fa-play"></i> Terapkan Styling</button>
                         </div>
                     </div>
                     <div class="playground-card">
                         <div class="playground-header">
-                            <h3><i class="fa-solid fa-eye"></i> Output Visual</h3>
+                            <h3><i class="fa-solid fa-eye"></i> Visual Output</h3>
                         </div>
-                        <div class="playground-body" style="padding: 20px; display:flex; justify-content:center; align-items:center; min-height: 200px;">
-                            <div id="css-sim-output" style="width: 100px; height: 100px; background-color: #264de4; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);"></div>
+                        <div class="playground-body" style="padding: 20px; display:flex; justify-content:center; align-items:center; min-height: 250px; overflow: hidden; background: #111;">
+                            <div id="css-sim-wrapper">
+                                <!-- HTML Structure for CSS -->
+                                <div class="profil-card">
+                                    <div class="profil-title">Member Hantech</div>
+                                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Belajar Coding & AI</p>
+                                    <button class="profil-btn">Lihat Profil</button>
+                                </div>
+                            </div>
                             <style id="dynamic-css-style"></style>
                         </div>
                     </div>
@@ -750,20 +770,25 @@ title: Home
                             <h3><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript Console</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
-                            <textarea id="js-sim-input" style="width:100%;height:120px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;">let msg = "HanTech Education";
-let stars = 5;
-return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
-                            <button id="runJsBtn" class="btn btn-full" style="background:#f7df1e;color:black;margin-top:10px;font-weight:bold;box-shadow: 0 4px 15px rgba(247, 223, 30, 0.3);"><i class="fa-solid fa-play"></i> Eksekusi JS</button>
+                            <textarea id="js-sim-input" style="width:100%;height:150px;background:#1e1e1e;color:#d4d4d4;font-family:monospace;border-radius:8px;padding:10px;border:none;">// Coba Jalankan Loop!
+console.log("Memulai simulasi...");
+for(let i = 1; i <= 3; i++) {
+  console.log("Perulangan ke-" + i);
+}
+console.log("Selesai!");
+</textarea>
+                            <div style="display:flex; gap: 10px; margin-top:10px;">
+                                <button id="runJsBtn" class="btn" style="flex:1; background:#f7df1e;color:black;font-weight:bold;box-shadow: 0 4px 15px rgba(247, 223, 30, 0.3);"><i class="fa-solid fa-play"></i> Eksekusi JS</button>
+                                <button id="clearJsBtn" class="btn" style="background:#555;color:white;"><i class="fa-solid fa-trash"></i> Clear</button>
+                            </div>
                         </div>
                     </div>
                     <div class="playground-card">
                         <div class="playground-header">
                             <h3><i class="fa-solid fa-terminal"></i> Terminal Output</h3>
                         </div>
-                        <div class="playground-body" style="padding: 20px; background:#000; font-family:monospace; color:#0f0; border-radius:12px; min-height: 200px;">
-                            <div id="js-sim-output">
-                                &gt; Bimbel HanTech Education mendapat 5 bintang!
-                            </div>
+                        <div class="playground-body" style="padding: 20px; background:#000; font-family:monospace; color:#0f0; border-radius:12px; min-height: 250px; overflow-y: auto;">
+                            <div id="js-sim-output" style="white-space: pre-wrap; line-height: 1.5;"></div>
                         </div>
                     </div>
                 </div>
@@ -777,6 +802,7 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                             <h3><i class="fa-solid fa-mobile-screen" style="color:#02569B;"></i> Flutter Simulator</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
+                            <p style="font-size: 0.85rem; color: var(--slate-300); margin-bottom: 15px;">Klik tombol '+' di HP untuk menambah angka. Lalu ubah warna dan klik Hot Reload untuk melihat fitur <b>Stateful Hot Reload</b> (angka tidak tereset!).</p>
                             <div class="control-group">
                                 <label class="control-label">Ubah Warna Tema Aplikasi</label>
                                 <select id="flutterColor" class="control-select">
@@ -801,18 +827,18 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                         <div class="playground-body" style="padding: 20px; display:flex; justify-content:center; align-items:center;">
                             <div class="mock-phone" style="width: 200px; height: 400px; border: 10px solid #222; border-radius: 30px; position: relative; overflow: hidden; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
                                 <!-- notch -->
-                                <div style="position: absolute; top:0; left: 50%; transform: translateX(-50%); width: 80px; height: 20px; background: #222; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;"></div>
+                                <div style="position: absolute; top:0; left: 50%; transform: translateX(-50%); width: 80px; height: 20px; background: #222; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: 10;"></div>
                                 <!-- app bar -->
-                                <div id="mockAppBar" style="width: 100%; height: 70px; background: #02569B; display: flex; align-items: flex-end; padding-bottom: 12px; justify-content: center; color: white; font-weight: bold; font-family: sans-serif; transition: background 0.3s;">
+                                <div id="mockAppBar" style="width: 100%; height: 70px; background: #02569B; display: flex; align-items: flex-end; padding-bottom: 12px; justify-content: center; color: white; font-weight: bold; font-family: sans-serif; transition: background 0.3s; z-index: 5; position: relative;">
                                     HanTech App
                                 </div>
                                 <!-- content -->
-                                <div style="padding: 20px; text-align: center; margin-top: 40px;">
-                                    <div id="mockCircle" style="width: 60px; height: 60px; background: #02569B; border-radius: 50%; margin: 0 auto 20px auto; transition: background 0.3s;"></div>
-                                    <p style="color: #555; font-family: sans-serif; font-size: 0.9rem;">Flutter UI Active</p>
+                                <div style="padding: 20px; text-align: center; margin-top: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px;">
+                                    <p style="color: #555; font-family: sans-serif; font-size: 0.9rem; margin-bottom: 10px;">You have pushed the button this many times:</p>
+                                    <h1 id="flutterCounterDisplay" style="color: #333; font-family: sans-serif; font-size: 3rem; margin: 0;">0</h1>
                                 </div>
                                 <!-- fab -->
-                                <div id="mockFab" style="width: 45px; height: 45px; background: #02569B; border-radius: 50%; position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                                <div id="mockFab" style="width: 50px; height: 50px; background: #02569B; border-radius: 50%; position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; user-select: none;">
                                     +
                                 </div>
                             </div>
@@ -829,13 +855,12 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                             <h3><i class="fa-solid fa-brain" style="color:#ffb703;"></i> ML Linear Regression</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
-                            <p style="font-size: 0.9rem; color: var(--slate-300);">Simulasi proses pelatihan model Machine Learning untuk mencari garis regresi yang paling sesuai dengan sebaran data.</p>
-                            <div class="control-group">
-                                <label class="control-label">Jumlah Epoch (Latihan)</label>
-                                <input type="range" id="mlEpochs" class="control-slider" min="10" max="100" value="50">
-                                <span id="mlEpochsVal" style="color:#ffb703; font-weight:bold;">50 Epochs</span>
+                            <p style="font-size: 0.9rem; color: var(--slate-300);">Simulasi <b>Least Squares</b>. Klik area visualisasi untuk <b>menambah titik-titik data baru</b> (bikin pola tersebar). Lalu tekan tombol Training untuk menghitung garis regresi persis di tengah pola data!</p>
+                            
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button id="trainMlBtn" class="btn" style="flex: 1; background:#ffb703;color:#000;font-weight:bold;box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);"><i class="fa-solid fa-gears"></i> Mulai Training</button>
+                                <button id="resetMlBtn" class="btn" style="background:#555;color:white;"><i class="fa-solid fa-rotate-left"></i> Reset</button>
                             </div>
-                            <button id="trainMlBtn" class="btn btn-full" style="background:#ffb703;color:#000;margin-top:10px;font-weight:bold;box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);"><i class="fa-solid fa-gears"></i> Mulai Training Model</button>
                             
                             <div id="mlProgressContainer" style="display:none; margin-top: 15px;">
                                 <div style="font-size: 0.85rem; margin-bottom: 5px; font-weight: 600;">Training Progress... <span id="mlPercent" style="color:#10b981;">0%</span></div>
@@ -847,19 +872,12 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                     </div>
                     <div class="playground-card">
                         <div class="playground-header">
-                            <h3><i class="fa-solid fa-chart-line"></i> Visualisasi Prediksi</h3>
+                            <h3><i class="fa-solid fa-chart-line"></i> Visualisasi Interaktif</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px; display:flex; justify-content:center; align-items:center;">
-                            <div style="width: 100%; height: 200px; position: relative; background: rgba(0,0,0,0.2); border-left: 2px solid #555; border-bottom: 2px solid #555; border-radius: 4px;">
-                                <!-- Data points -->
-                                <div class="ml-point" style="position: absolute; left: 10%; bottom: 15%; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 5px #38bdf8;"></div>
-                                <div class="ml-point" style="position: absolute; left: 25%; bottom: 35%; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 5px #38bdf8;"></div>
-                                <div class="ml-point" style="position: absolute; left: 45%; bottom: 42%; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 5px #38bdf8;"></div>
-                                <div class="ml-point" style="position: absolute; left: 70%; bottom: 65%; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 5px #38bdf8;"></div>
-                                <div class="ml-point" style="position: absolute; left: 85%; bottom: 85%; width: 10px; height: 10px; background: #38bdf8; border-radius: 50%; box-shadow: 0 0 5px #38bdf8;"></div>
-                                
+                            <div id="mlArea" style="width: 100%; height: 250px; position: relative; background: rgba(0,0,0,0.2); border-left: 2px solid #555; border-bottom: 2px solid #555; border-radius: 4px; cursor: crosshair; overflow: hidden;">
                                 <!-- Regression Line -->
-                                <div id="mlLine" style="position: absolute; left: 0; bottom: 8%; width: 0%; height: 3px; background: #ffb703; transform: rotate(-38deg); transform-origin: left center; transition: width 1s ease-out; box-shadow: 0 0 8px #ffb703;"></div>
+                                <div id="mlLine" style="position: absolute; left: 0; bottom: 0; width: 0%; height: 3px; background: #ffb703; transform-origin: left center; transition: width 0.5s ease-out; box-shadow: 0 0 8px #ffb703; display: none;"></div>
                             </div>
                         </div>
                     </div>
@@ -874,38 +892,53 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                             <h3><i class="fa-solid fa-network-wired" style="color:#fb8500;"></i> Neural Network (JST)</h3>
                         </div>
                         <div class="playground-body" style="padding: 20px;">
-                             <p style="font-size: 0.9rem; color: var(--slate-300);">Simulasi aktivasi neuron dalam Deep Learning. Input data masuk, diproses di hidden layers, lalu menghasilkan prediksi final.</p>
-                             <button id="activateDlBtn" class="btn btn-full" style="background:linear-gradient(135deg, #fb8500, #ff5400);color:#fff;margin-top:15px;font-weight:bold;box-shadow: 0 4px 15px rgba(251, 133, 0, 0.4);"><i class="fa-solid fa-bolt"></i> Aktivasi Jaringan Saraf!</button>
+                             <p style="font-size: 0.9rem; color: var(--slate-300);">Simulasi aktivasi jaringan (Forward Propagation). Pilih input, dan lihat bagaimana AI menyebarkan data hingga menghasilkan probabilitas klasifikasi!</p>
+                             
+                             <div class="control-group" style="margin-top: 15px;">
+                                 <label class="control-label">Pilih Data Input</label>
+                                 <select id="dlInputSelect" class="control-select">
+                                     <option value="kucing">Gambar Kucing</option>
+                                     <option value="anjing">Gambar Anjing</option>
+                                     <option value="mobil">Gambar Mobil</option>
+                                 </select>
+                             </div>
+
+                             <button id="activateDlBtn" class="btn btn-full" style="background:linear-gradient(135deg, #fb8500, #ff5400);color:#fff;margin-top:15px;font-weight:bold;box-shadow: 0 4px 15px rgba(251, 133, 0, 0.4);"><i class="fa-solid fa-bolt"></i> Jalankan Feed-Forward</button>
                         </div>
                     </div>
                     <div class="playground-card">
                         <div class="playground-header">
-                            <h3><i class="fa-solid fa-diagram-project"></i> Arsitektur Model AI</h3>
+                            <h3><i class="fa-solid fa-diagram-project"></i> Arsitektur & Prediksi</h3>
                         </div>
-                        <div class="playground-body" style="padding: 20px; display:flex; justify-content:center; align-items:center;">
-                            <div class="dl-network" style="display: flex; justify-content: space-between; width: 100%; align-items: center; min-height: 200px; position: relative;">
+                        <div class="playground-body" style="padding: 20px; display:flex; flex-direction: column; justify-content:center; align-items:center;">
+                            <div class="dl-network" id="dlNetworkContainer" style="display: flex; justify-content: space-between; width: 100%; align-items: center; min-height: 200px; position: relative;">
                                 <!-- Input Layer -->
-                                <div style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
+                                <div class="dl-layer" data-layer="0" style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
                                     <div class="dl-node input-node" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node input-node" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node input-node" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                 </div>
                                 <!-- Hidden Layer 1 -->
-                                <div style="display: flex; flex-direction: column; gap: 10px; z-index: 2;">
+                                <div class="dl-layer" data-layer="1" style="display: flex; flex-direction: column; gap: 10px; z-index: 2;">
                                     <div class="dl-node hidden-node-1" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node hidden-node-1" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node hidden-node-1" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node hidden-node-1" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                 </div>
                                 <!-- Hidden Layer 2 -->
-                                <div style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
+                                <div class="dl-layer" data-layer="2" style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
                                     <div class="dl-node hidden-node-2" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                     <div class="dl-node hidden-node-2" style="width:30px; height:30px; background:#444; border-radius:50%; transition: all 0.3s;"></div>
                                 </div>
                                 <!-- Output Layer -->
-                                <div style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
+                                <div class="dl-layer" data-layer="3" style="display: flex; flex-direction: column; gap: 15px; z-index: 2;">
                                     <div class="dl-node output-node" style="width:40px; height:40px; background:#444; border-radius:50%; border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s;"></div>
                                 </div>
+                            </div>
+                            
+                            <!-- Hasil Akhir -->
+                            <div id="dlResultBox" style="margin-top: 15px; padding: 10px 20px; background: rgba(251, 133, 0, 0.1); border: 1px solid #fb8500; border-radius: 8px; font-weight: bold; font-size: 1.1rem; color: #fb8500; opacity: 0; transition: opacity 0.5s;">
+                                Prediksi: Menunggu...
                             </div>
                         </div>
                     </div>
@@ -3148,8 +3181,13 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
         const runHtmlBtn = document.getElementById('runHtmlBtn');
         if (runHtmlBtn) {
             runHtmlBtn.addEventListener('click', () => {
-                htmlOutput.innerHTML = htmlInput.value;
+                const iframeDoc = htmlOutput.contentDocument || htmlOutput.contentWindow.document;
+                iframeDoc.open();
+                iframeDoc.write(htmlInput.value);
+                iframeDoc.close();
             });
+            // Initial render
+            setTimeout(() => runHtmlBtn.click(), 500);
         }
         
         // CSS Simulation
@@ -3158,23 +3196,44 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
         const dynamicCssStyle = document.getElementById('dynamic-css-style');
         if (runCssBtn) {
             runCssBtn.addEventListener('click', () => {
-                dynamicCssStyle.innerHTML = cssInput.value.replace(/\.box/g, '#css-sim-output');
+                // Scope CSS to only apply within #css-sim-wrapper
+                let rawCss = cssInput.value;
+                let scopedCss = rawCss.replace(/([^\r\n,{}]+)(,(?=[^}]*\{)|\s*\{)/g, (match) => {
+                    if(match.trim().startsWith('@')) return match; // skip media queries etc
+                    return '#css-sim-wrapper ' + match;
+                });
+                dynamicCssStyle.innerHTML = scopedCss;
             });
+            setTimeout(() => runCssBtn.click(), 500);
         }
         
         // JS Simulation
         const jsInput = document.getElementById('js-sim-input');
         const runJsBtn = document.getElementById('runJsBtn');
+        const clearJsBtn = document.getElementById('clearJsBtn');
         const jsOutput = document.getElementById('js-sim-output');
         if (runJsBtn) {
             runJsBtn.addEventListener('click', () => {
+                jsOutput.innerHTML = ""; 
+                const originalLog = console.log;
+                // Override console.log
+                console.log = function(...args) {
+                    let msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ');
+                    jsOutput.innerHTML += `<span style="color:#0f0;">&gt; ${msg}</span><br>`;
+                };
+                
                 try {
                     const func = new Function(jsInput.value);
-                    const res = func();
-                    jsOutput.innerHTML = "&gt; " + res;
+                    func();
                 } catch(e) {
-                    jsOutput.innerHTML = "&gt; <span style='color:red;'>Error: " + e.message + "</span>";
+                    jsOutput.innerHTML += `<span style='color:red;'>&gt; Error: ${e.message}</span><br>`;
                 }
+                
+                // Kembalikan console log
+                console.log = originalLog;
+            });
+            clearJsBtn.addEventListener('click', () => {
+                jsOutput.innerHTML = "";
             });
         }
         
@@ -3183,64 +3242,171 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
         const flutterText = document.getElementById('flutterText');
         const hotReloadBtn = document.getElementById('hotReloadBtn');
         const mockAppBar = document.getElementById('mockAppBar');
-        const mockCircle = document.getElementById('mockCircle');
         const mockFab = document.getElementById('mockFab');
+        const flutterCounterDisplay = document.getElementById('flutterCounterDisplay');
+        let flutterCounter = 0;
+        
         if (hotReloadBtn) {
+            mockFab.addEventListener('click', () => {
+                flutterCounter++;
+                flutterCounterDisplay.innerText = flutterCounter;
+                // Ripple animation
+                mockFab.style.transform = 'scale(0.9)';
+                setTimeout(() => mockFab.style.transform = 'scale(1)', 100);
+            });
+            
             hotReloadBtn.addEventListener('click', () => {
                 const color = flutterColor.value;
                 mockAppBar.style.background = color;
-                mockCircle.style.background = color;
                 mockFab.style.background = color;
                 mockAppBar.innerText = flutterText.value;
-                mockFab.style.transform = 'scale(1.2)';
-                setTimeout(() => mockFab.style.transform = 'scale(1)', 200);
+                // Animate hot reload flash
+                document.querySelector('.mock-phone').style.opacity = '0.5';
+                setTimeout(() => {
+                    document.querySelector('.mock-phone').style.opacity = '1';
+                }, 200);
             });
         }
         
-        // ML Simulation
-        const mlEpochs = document.getElementById('mlEpochs');
-        const mlEpochsVal = document.getElementById('mlEpochsVal');
+        // ML Simulation (Linear Regression)
+        const mlArea = document.getElementById('mlArea');
         const trainMlBtn = document.getElementById('trainMlBtn');
+        const resetMlBtn = document.getElementById('resetMlBtn');
+        const mlLine = document.getElementById('mlLine');
         const mlProgressContainer = document.getElementById('mlProgressContainer');
         const mlProgressBar = document.getElementById('mlProgressBar');
         const mlPercent = document.getElementById('mlPercent');
-        const mlLine = document.getElementById('mlLine');
-        if (mlEpochs) {
-            mlEpochs.addEventListener('input', () => {
-                mlEpochsVal.innerText = mlEpochs.value + " Epochs";
+        
+        let mlPoints = [];
+        
+        function drawPoints() {
+            // Hapus titik lama (kecuali mlLine)
+            const children = Array.from(mlArea.children);
+            children.forEach(c => {
+                if(c.id !== 'mlLine') mlArea.removeChild(c);
             });
+            
+            // Gambar titik baru
+            mlPoints.forEach(p => {
+                let dot = document.createElement('div');
+                dot.style.position = 'absolute';
+                dot.style.left = p.x + 'px';
+                dot.style.top = p.y + 'px';
+                dot.style.width = '10px';
+                dot.style.height = '10px';
+                dot.style.background = '#38bdf8';
+                dot.style.borderRadius = '50%';
+                dot.style.boxShadow = '0 0 5px #38bdf8';
+                dot.style.transform = 'translate(-50%, -50%)';
+                mlArea.appendChild(dot);
+            });
+        }
+        
+        if (mlArea) {
+            mlArea.addEventListener('click', (e) => {
+                if (e.target.id === 'mlLine') return;
+                const rect = mlArea.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                mlPoints.push({x, y});
+                drawPoints();
+                mlLine.style.display = 'none';
+            });
+            
+            resetMlBtn.addEventListener('click', () => {
+                mlPoints = [];
+                drawPoints();
+                mlLine.style.display = 'none';
+            });
+            
             trainMlBtn.addEventListener('click', () => {
-                mlLine.style.width = '0%';
+                if (mlPoints.length < 2) {
+                    alert("Tambahkan minimal 2 titik data dengan mengklik area grafik!");
+                    return;
+                }
+                
+                mlLine.style.display = 'none';
+                mlLine.style.width = '0px';
                 mlLine.style.transition = 'none';
                 mlProgressContainer.style.display = 'block';
                 
-                // Allow reflow for transition reset
-                void mlLine.offsetWidth;
-                mlLine.style.transition = 'width 1s ease-out';
+                // Least Squares Calculation
+                let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+                let n = mlPoints.length;
+                mlPoints.forEach(p => {
+                    sumX += p.x;
+                    sumY += p.y;
+                    sumXY += p.x * p.y;
+                    sumX2 += p.x * p.x;
+                });
                 
-                let p = 0;
-                let epochCount = parseInt(mlEpochs.value);
-                let speed = 2000 / epochCount;
+                let denominator = (n * sumX2 - sumX * sumX);
+                let slope = 0;
+                if(denominator !== 0) {
+                   slope = (n * sumXY - sumX * sumY) / denominator;
+                }
+                let intercept = (sumY - slope * sumX) / n;
                 
+                let w = mlArea.clientWidth;
+                let y1 = intercept; // at x = 0
+                let y2 = slope * w + intercept; // at x = w
+                
+                let dx = w;
+                let dy = y2 - y1;
+                let length = Math.sqrt(dx*dx + dy*dy);
+                let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                
+                // Animasi
+                let p_progress = 0;
                 const iv = setInterval(() => {
-                    p += 1;
-                    let percentage = Math.min(100, Math.round((p / epochCount) * 100));
-                    mlProgressBar.style.width = percentage + '%';
-                    mlPercent.innerText = percentage + '%';
-                    if (p >= epochCount) {
+                    p_progress += 5;
+                    mlProgressBar.style.width = p_progress + '%';
+                    mlPercent.innerText = p_progress + '%';
+                    if (p_progress >= 100) {
                         clearInterval(iv);
-                        mlLine.style.width = '120%';
+                        setTimeout(() => {
+                            mlProgressContainer.style.display = 'none';
+                            mlLine.style.display = 'block';
+                            mlLine.style.left = '0px';
+                            mlLine.style.top = y1 + 'px';
+                            mlLine.style.bottom = 'auto';
+                            mlLine.style.transform = `rotate(${angle}deg)`;
+                            
+                            void mlLine.offsetWidth;
+                            mlLine.style.transition = 'width 1s ease-out';
+                            mlLine.style.width = length + 'px';
+                        }, 200);
                     }
-                }, speed);
+                }, 50);
             });
+            
+            // Init default points
+            setTimeout(() => {
+                const w = mlArea.clientWidth || 300;
+                const h = mlArea.clientHeight || 250;
+                mlPoints = [
+                    {x: w*0.1, y: h*0.8}, {x: w*0.3, y: h*0.6},
+                    {x: w*0.5, y: h*0.5}, {x: w*0.7, y: h*0.3},
+                    {x: w*0.9, y: h*0.2}
+                ];
+                drawPoints();
+            }, 100);
         }
         
         // DL Simulation
         const activateDlBtn = document.getElementById('activateDlBtn');
+        const dlInputSelect = document.getElementById('dlInputSelect');
+        const dlResultBox = document.getElementById('dlResultBox');
+        
         if (activateDlBtn) {
             activateDlBtn.addEventListener('click', () => {
+                activateDlBtn.disabled = true;
+                dlResultBox.style.opacity = '0';
+                dlResultBox.innerText = 'Prediksi: Menunggu...';
+                
                 const layers = ['.input-node', '.hidden-node-1', '.hidden-node-2', '.output-node'];
                 let delay = 0;
+                
                 layers.forEach((selector, idx) => {
                     setTimeout(() => {
                         const nodes = document.querySelectorAll(selector);
@@ -3249,6 +3415,7 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                             n.style.boxShadow = '0 0 15px #fb8500';
                             n.style.borderColor = '#fff';
                         });
+                        
                         if (idx > 0) {
                             document.querySelectorAll(layers[idx-1]).forEach(n => {
                                 n.style.background = '#444';
@@ -3266,7 +3433,17 @@ return `Bimbel ${msg} mendapat ${stars} bintang!`;</textarea>
                         n.style.boxShadow = '0 0 0px transparent';
                         n.style.borderColor = 'rgba(255,255,255,0.2)';
                     });
-                }, delay + 500);
+                    
+                    activateDlBtn.disabled = false;
+                    const val = dlInputSelect.value;
+                    let resultText = "";
+                    if (val === 'kucing') resultText = "Kucing (99.2%) 🐱";
+                    else if (val === 'anjing') resultText = "Anjing (97.5%) 🐶";
+                    else if (val === 'mobil') resultText = "Mobil (98.8%) 🚗";
+                    
+                    dlResultBox.innerText = `Prediksi: ${resultText}`;
+                    dlResultBox.style.opacity = '1';
+                }, delay + 300);
             });
         }
     });
