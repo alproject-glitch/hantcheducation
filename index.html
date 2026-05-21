@@ -3828,7 +3828,7 @@ console.log("Selesai!");
         if (!text) { ttsText.focus(); return; }
 
         const lang = 'id';
-        const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=gtx`;
         const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(googleTTSUrl)}`;
 
         // Tampilkan loading spinner
