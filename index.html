@@ -3462,7 +3462,7 @@ console.log("Selesai!");
         padding: 20px;
         z-index: 9999;
         box-shadow: 0 0 30px rgba(255, 183, 3, 0.4);
-        width: 300px;
+        width: 310px;
         font-family: 'Inter', sans-serif;
         transition: all 0.3s ease;
     }
@@ -3484,7 +3484,45 @@ console.log("Selesai!");
     }
     .tts-close-btn:hover { color: #fff; }
 
-    /* --- INPUT MODE --- */
+    /* Gender toggle (Icon only) */
+    .tts-gender-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 12px;
+    }
+    .tts-gender-btn {
+        width: 44px;
+        height: 44px;
+        border: 1px solid #444;
+        border-radius: 50%;
+        background: #1a1a1a;
+        color: #aaa;
+        cursor: pointer;
+        font-size: 1.25rem;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .tts-gender-btn:hover {
+        border-color: #ffb703;
+        color: #fff;
+    }
+    .tts-gender-btn.active-male {
+        border-color: #38bdf8;
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+    .tts-gender-btn.active-female {
+        border-color: #f472b6;
+        background: rgba(244, 114, 182, 0.15);
+        color: #f472b6;
+        box-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+    }
+
+    /* INPUT MODE */
     #ttsInputMode textarea {
         width: 100%;
         height: 90px;
@@ -3502,8 +3540,13 @@ console.log("Selesai!");
         transition: border-color 0.2s;
     }
     #ttsInputMode textarea:focus { border-color: #ffb703; }
+
+    .tts-action-row {
+        display: flex;
+        gap: 8px;
+    }
     #ttsPlayBtn {
-        width: 100%;
+        flex: 1;
         padding: 10px;
         background: linear-gradient(135deg, #ffb703, #ff8500);
         color: #000;
@@ -3516,7 +3559,22 @@ console.log("Selesai!");
     }
     #ttsPlayBtn:hover { box-shadow: 0 4px 15px rgba(255,183,3,0.5); transform: translateY(-1px); }
 
-    /* --- SPEAKING MODE --- */
+    #ttsDownloadBtn {
+        padding: 10px 14px;
+        background: #1a1a1a;
+        border: 1px solid #444;
+        border-radius: 8px;
+        color: #aaa;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #ttsDownloadBtn:hover { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.1); }
+
+    /* SPEAKING MODE */
     #ttsSpeakingMode {
         display: none;
         flex-direction: column;
@@ -3528,21 +3586,20 @@ console.log("Selesai!");
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #ffb703, #ff5400);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 2.2rem;
         color: white;
         position: relative;
-        box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.5);
-        animation: none;
     }
+    .tts-avatar.male-avatar  { background: linear-gradient(135deg, #38bdf8, #0284c7); }
+    .tts-avatar.female-avatar{ background: linear-gradient(135deg, #f472b6, #db2777); }
     .tts-avatar.speaking {
         animation: pulse-ring 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
     }
     @keyframes pulse-ring {
-        0%   { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.6); }
+        0%   { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7); }
         70%  { box-shadow: 0 0 0 20px rgba(255, 183, 3, 0); }
         100% { box-shadow: 0 0 0 0 rgba(255, 183, 3, 0); }
     }
@@ -3558,7 +3615,6 @@ console.log("Selesai!");
         background: #ffb703;
         border-radius: 3px;
         min-height: 5px;
-        animation: none;
     }
     .tts-wave-bars.active span:nth-child(1) { animation: wave 0.9s ease infinite; }
     .tts-wave-bars.active span:nth-child(2) { animation: wave 0.9s ease 0.15s infinite; }
@@ -3569,12 +3625,7 @@ console.log("Selesai!");
         0%, 100% { height: 5px; }
         50%       { height: 25px; }
     }
-    .tts-speaking-label {
-        color: #ffb703;
-        font-weight: 600;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-    }
+    .tts-speaking-label { color: #ffb703; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; }
     #ttsEditChatBtn {
         margin-top: 5px;
         background: rgba(255,183,3,0.1);
@@ -3601,14 +3652,30 @@ console.log("Selesai!");
 
     <!-- INPUT MODE -->
     <div id="ttsInputMode">
+        <!-- Gender Toggle (Icon Only) -->
+        <div class="tts-gender-row">
+            <button class="tts-gender-btn active-male" id="ttsMaleBtn" title="Suara Pria">
+                <i class="fa-solid fa-person"></i>
+            </button>
+            <button class="tts-gender-btn" id="ttsFemaleBtn" title="Suara Wanita">
+                <i class="fa-solid fa-person-dress"></i>
+            </button>
+        </div>
+
         <textarea id="ttsText" placeholder="Masukkan teks bahasa Indonesia..."></textarea>
-        <button id="ttsPlayBtn"><i class="fa-solid fa-play"></i>&nbsp; Bacakan Teks</button>
+
+        <div class="tts-action-row">
+            <button id="ttsPlayBtn"><i class="fa-solid fa-play"></i>&nbsp; Bacakan</button>
+            <button id="ttsDownloadBtn" title="Download Audio">
+                <i class="fa-solid fa-download"></i>
+            </button>
+        </div>
     </div>
 
     <!-- SPEAKING MODE -->
     <div id="ttsSpeakingMode">
-        <div class="tts-avatar" id="ttsAvatar">
-            <i class="fa-solid fa-volume-high"></i>
+        <div class="tts-avatar male-avatar" id="ttsAvatar">
+            <i class="fa-solid fa-person" id="ttsAvatarIcon"></i>
         </div>
         <div class="tts-wave-bars" id="ttsWaveBars">
             <span></span><span></span><span></span><span></span><span></span>
@@ -3625,29 +3692,65 @@ console.log("Selesai!");
     // ============================
     let secretAdminCode = "";
     const targetAdminCode = "admin";
+
     const adminTtsPanel   = document.getElementById('adminTtsPanel');
     const closeTtsBtn     = document.getElementById('closeTtsBtn');
     const ttsPlayBtn      = document.getElementById('ttsPlayBtn');
+    const ttsDownloadBtn  = document.getElementById('ttsDownloadBtn');
     const ttsText         = document.getElementById('ttsText');
     const ttsInputMode    = document.getElementById('ttsInputMode');
     const ttsSpeakingMode = document.getElementById('ttsSpeakingMode');
     const ttsAvatar       = document.getElementById('ttsAvatar');
+    const ttsAvatarIcon   = document.getElementById('ttsAvatarIcon');
     const ttsWaveBars     = document.getElementById('ttsWaveBars');
     const ttsEditChatBtn  = document.getElementById('ttsEditChatBtn');
+    const ttsMaleBtn      = document.getElementById('ttsMaleBtn');
+    const ttsFemaleBtn    = document.getElementById('ttsFemaleBtn');
+
+    let ttsGender = 'male'; // default
+
+    // --- Gender Toggle ---
+    ttsMaleBtn.addEventListener('click', () => {
+        ttsGender = 'male';
+        ttsMaleBtn.classList.add('active-male');
+        ttsFemaleBtn.classList.remove('active-female');
+    });
+    ttsFemaleBtn.addEventListener('click', () => {
+        ttsGender = 'female';
+        ttsFemaleBtn.classList.add('active-female');
+        ttsMaleBtn.classList.remove('active-male');
+    });
 
     // --- Helpers ---
     function showInputMode() {
-        ttsInputMode.style.display  = 'block';
+        ttsInputMode.style.display    = 'block';
         ttsSpeakingMode.style.display = 'none';
         window.speechSynthesis.cancel();
         ttsAvatar.classList.remove('speaking');
         ttsWaveBars.classList.remove('active');
     }
     function showSpeakingMode() {
+        if (ttsGender === 'male') {
+            ttsAvatar.className = 'tts-avatar male-avatar speaking';
+            ttsAvatarIcon.className = 'fa-solid fa-person';
+        } else {
+            ttsAvatar.className = 'tts-avatar female-avatar speaking';
+            ttsAvatarIcon.className = 'fa-solid fa-person-dress';
+        }
         ttsInputMode.style.display    = 'none';
         ttsSpeakingMode.style.display = 'flex';
-        ttsAvatar.classList.add('speaking');
         ttsWaveBars.classList.add('active');
+    }
+
+    // Pilih voice berdasarkan gender
+    function pickVoice(isMale) {
+        const voices = window.speechSynthesis.getVoices();
+        const idVoices = voices.filter(v => v.lang === 'id-ID' || v.lang.startsWith('id'));
+        if (isMale) {
+            return idVoices.find(v => /male|pria|laki|man/i.test(v.name)) || idVoices[0] || null;
+        } else {
+            return idVoices.find(v => /female|wanita|perempuan|woman/i.test(v.name)) || idVoices[idVoices.length - 1] || null;
+        }
     }
 
     // --- Secret Trigger ---
@@ -3679,16 +3782,14 @@ console.log("Selesai!");
 
         window.speechSynthesis.cancel();
 
-        const utterance   = new SpeechSynthesisUtterance(text);
-        utterance.lang    = 'id-ID';
-        utterance.rate    = 1.45;   // Lebih cepat
-        utterance.pitch   = 1.05;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang  = 'id-ID';
+        utterance.rate  = 1.0;   // natural speed
+        const isMale    = ttsGender === 'male';
+        utterance.pitch = isMale ? 0.85 : 1.15; // deeper male, higher female
 
-        // Cari voice Bahasa Indonesia
-        const voices  = window.speechSynthesis.getVoices();
-        const idVoice = voices.find(v => v.lang === 'id-ID') ||
-                        voices.find(v => v.lang.startsWith('id'));
-        if (idVoice) utterance.voice = idVoice;
+        const voice = pickVoice(isMale);
+        if (voice) utterance.voice = voice;
 
         utterance.onstart = () => showSpeakingMode();
         utterance.onend   = () => {
@@ -3698,6 +3799,40 @@ console.log("Selesai!");
         utterance.onerror = () => showInputMode();
 
         window.speechSynthesis.speak(utterance);
+    });
+
+    // --- Download Audio ---
+    ttsDownloadBtn.addEventListener('click', async () => {
+        const text = ttsText.value.trim();
+        if (!text) { ttsText.focus(); return; }
+
+        const lang = 'id';
+        const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(googleTTSUrl)}`;
+
+        // Tampilkan loading spinner
+        ttsDownloadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+        ttsDownloadBtn.style.pointerEvents = 'none';
+
+        try {
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error('Fetch failed');
+            const blob = await response.blob();
+            const url  = URL.createObjectURL(blob);
+            const a    = document.createElement('a');
+            a.href     = url;
+            a.download = `tts_${ttsGender}_indonesia.mp3`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        } catch (err) {
+            // Fallback: buka di tab baru
+            window.open(googleTTSUrl, '_blank');
+        } finally {
+            ttsDownloadBtn.innerHTML = '<i class="fa-solid fa-download"></i>';
+            ttsDownloadBtn.style.pointerEvents = 'auto';
+        }
     });
 
     // Preload voices
